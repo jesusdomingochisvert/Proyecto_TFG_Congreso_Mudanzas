@@ -1,5 +1,6 @@
 package com.example.congresotfg.homeModule.model
 
+import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.congresotfg.CongresoApplication
@@ -38,6 +39,8 @@ class HomeInteractor {
                 }
 
             }
+
+            callback(eventos)
 
         }, {
 
@@ -78,6 +81,8 @@ class HomeInteractor {
                 }
 
             }
+
+            callback(restaurantes)
 
         }, {
 

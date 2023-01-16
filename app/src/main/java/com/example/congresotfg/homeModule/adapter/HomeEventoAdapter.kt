@@ -28,7 +28,7 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val evento = eventos.get(position)
+        val evento = eventos[position]
 
         with(holder) {
 

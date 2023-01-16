@@ -3,10 +3,12 @@ package com.example.congresotfg.homeModule
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.common.entities.EventoEntity
@@ -16,6 +18,7 @@ import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.adapter.HomeEventoAdapter
 import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
+import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 
@@ -30,18 +33,52 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
+    private lateinit var homeViewModel: HomeViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+        homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
+
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         fragmentContext = this.requireActivity()
 
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+        setupViewModel()
+
         setupRecyclerView()
         setupRecyclerView2()
 
         setupImagesCarousel()
 
-        return binding.root
+    }
+
+    private fun setupViewModel() {
+
+        homeViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
+
+            homeEventoAdapter.setEvento(eventos)
+
+        }
+
+        homeViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
+
+            homeRestauranteAdapter.setRestaurante(restaurantes)
+
+        }
 
     }
 
@@ -51,7 +88,9 @@ class HomeFragment : Fragment(), OnClickListener {
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
 
-        getEventos()
+        //getEventos()
+
+        setupViewModel()
 
         binding.rvRecentEvents.apply {
 
