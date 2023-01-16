@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+
+        android:id="@+id/drawer_contact"
+        android:title="@string/text_contact"
+
+        />
+
+    <item
+
+        android:id="@+id/drawer_about"
+        android:title="@string/text_about"
+
+        />
+
+    <item
+
+        android:id="@+id/drawer_my_tickets"
+        android:title="@string/text_my_tickets"
+
+        />
+
+    <item
+
+        android:id="@+id/drawer_friends"
+        android:title="@string/text_partners"
+
+        />
+
+    <item
+
+        android:id="@+id/drawer_my_events"
+        android:title="@string/text_my_list"
+
+        />
+
+</menu>

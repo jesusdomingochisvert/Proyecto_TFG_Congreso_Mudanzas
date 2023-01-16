@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerDialog"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dimension30dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="550dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        style="@style/DialogCorners"
+        android:src="@drawable/evento2"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+    </ImageView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_redondo"
+            >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/titulo_evento"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="NOMBRE DEL EVENTO">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/hora_evento"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/titulo_evento"
+                        tools:text="HORARIO">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/lugar_evento"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="120dp"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/titulo_evento"
+                        tools:text="LUGAR">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/ponentes_titulo"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ponentes"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lugar_evento">
+
+                    </TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/ponentes_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/ponentes_titulo"
+                        app:layout_constraintTop_toBottomOf="@id/ponentes_titulo">
+
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <TextView
+                        android:id="@+id/asistentes_titulo"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_asistentes"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ponentes_recycler">
+
+                    </TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/asistentes_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/asistentes_titulo"
+                        app:layout_constraintTop_toBottomOf="@id/asistentes_titulo">
+
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:text="Asistir"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:backgroundTint="@color/azul"
+                        app:strokeColor="@color/amarillo"
+                        app:strokeWidth="1dp"
+                        >
+
+                    </com.google.android.material.button.MaterialButton>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:src="@drawable/ic_back">
+
+        </ImageButton>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

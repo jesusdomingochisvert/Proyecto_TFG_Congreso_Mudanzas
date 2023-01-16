@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="border">20dp</dimen>
+    <dimen name="border_extra">50dp</dimen>
+    <dimen name="dimension10dp">10dp</dimen>
+    <dimen name="layoutRecordarme_size">150dp</dimen>
+    <dimen name="dimension20dp">20dp</dimen>
+    <dimen name="dimension40dp">40dp</dimen>
+    <dimen name="medidas_btn_back">40dp</dimen>
+    <dimen name="dimension30dp">30dp</dimen>
+</resources>

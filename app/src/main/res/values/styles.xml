@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="chipStrokeColor">@color/azul</item>
+        <item name="boxStrokeColor">@color/amarillo</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="color">@color/amarillo</item>
+        <item name="android:textColorHint">@color/azul</item>
+        <item name="cornerRadius">30dp</item>
+        <item name="boxCornerRadiusBottomEnd">15dp</item>
+        <item name="boxCornerRadiusBottomStart">15dp</item>
+        <item name="boxCornerRadiusTopEnd">15dp</item>
+        <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:textColor">#000000</item>
+        <item name="hintTextColor">#3F51B5</item>
+    </style>
+
+    <style name="btnLoginStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="cornerRadius">20dp</item>
+
+    </style>
+
+    <style name="recordarText_style">
+        <item name="android:text">@string/recordarmeText</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
+    <style name="MaterialAlertDialog_rounded" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="shapeAppearanceOverlay">@style/DialogCorners</item>
+        <item name="background">@color/white</item>
+    </style>
+
+    <style name="DialogCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="NoTitleDialog" parent="@style/Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+
+    </style>
+
+
+
+
+</resources>

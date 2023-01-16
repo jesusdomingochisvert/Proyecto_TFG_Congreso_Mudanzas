@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frame_contact"
+    tools:context=".ContactoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="32dp">
+
+        <TextView
+
+            android:id="@+id/tv_title_contact_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_contact_us"
+            style="?attr/textAppearanceHeadline5"
+            android:textStyle="bold"/>
+
+        <TextView
+
+            android:id="@+id/tv_subtitle_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_contact_us"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_reason"
+            style="?attr/textAppearanceHeadline6"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/til_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_reason"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tiet_reason"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+
+            android:id="@+id/tv_subtitle_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/til_reason"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_message"
+            style="?attr/textAppearanceHeadline6"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/til_message"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_subtitle_message"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tiet_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+
+            android:id="@+id/btn_send_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/til_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_send_email"
+            android:textColor="@android:color/white"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+            android:id="@+id/fab_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_send_email"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_outline_phone_callback"/>
+
+        <TextView
+
+            android:id="@+id/tv_phone_number_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/fab_call"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_phone_number_contact"
+            android:textColor="@android:color/black"
+            style="?attr/textAppearanceSubtitle1"/>
+
+        <TextView
+
+            android:id="@+id/tv_number_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phone_number_contact"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_number_contact"
+            android:textColor="@android:color/black"
+            style="?attr/textAppearanceSubtitle1"/>
+
+        <TextView
+
+            android:id="@+id/tv_email_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_number_contact"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/text_email_contact"
+            android:textColor="@android:color/black"
+            style="?attr/textAppearanceSubtitle1"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

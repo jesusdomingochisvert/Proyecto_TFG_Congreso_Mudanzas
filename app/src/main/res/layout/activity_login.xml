@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginModule.LoginActivity"
+    android:background="@drawable/fondo_degradado"
+    android:id="@+id/containerLogin">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cajalogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="200dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/login_fondo_redondo_claro">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/logo_fedem"
+                        android:layout_margin="25dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:src="@drawable/logofedem"
+
+                        >
+
+                    </ImageView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputLayoutStyle"
+                    app:hintTextColor="@color/azuldegradado"
+                    app:helperTextEnabled="false"
+                    app:helperTextTextColor="@color/helperTextColor"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_baseline_person_outline_24"
+                    app:endIconTint="@color/azul"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_username"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textPersonName"
+                        android:hint="@string/hintusername"
+                        android:textSize="14sp"
+
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/TextInputLayoutStyle"
+                        app:hintTextColor="@color/azuldegradado"
+                        app:helperTextEnabled="false"
+                        app:helperTextTextColor="@color/helperTextColor"
+                        app:endIconMode="password_toggle"
+                        app:endIconTint="@color/azul">
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:inputType="textPassword"
+                        android:hint="@string/hintpassword"
+                        android:textSize="14dp"
+
+                        />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="@dimen/layoutRecordarme_size"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp">
+
+                        <TextView
+                            style="@style/recordarText_style"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            app:layout_constraintEnd_toStartOf="@id/checkbox"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
+                        <com.google.android.material.checkbox.MaterialCheckBox
+                            android:id="@+id/checkbox"
+                            android:layout_width="@dimen/dimension40dp"
+                            android:layout_height="@dimen/dimension40dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:buttonTint="@color/azuldegradado"/>
+
+                    </LinearLayout>
+                    
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="150dp"
+                        android:layout_height="55dp"
+                        style="@style/TextInputLayoutStyle"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/amarillo"
+                        android:text="@string/text_login"
+                        android:textSize="18sp"
+                        android:textColor="#263238"
+                        android:elevation="10dp"
+                        android:stateListAnimator="@null"
+                        >
+                    </Button>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textoNoCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@string/don_t_have_an_account"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="10dp"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/amarillo"
+            android:text="@string/register_here"
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@id/textoNoCuenta"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

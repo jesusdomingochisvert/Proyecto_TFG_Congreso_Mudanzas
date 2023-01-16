@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dimension30dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        style="@style/DialogCorners">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            style="@style/DialogCorners"
+            android:src="@drawable/restaurante2"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+        </ImageView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/dialog_redondo"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="125dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/nombre_restaurante"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="NOMBRE DEL RESTAURANTE">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/hora_evento"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nombre_restaurante"
+                        tools:text="HORARIO">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tipocomida_txt"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/advent_pro_medium"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/nombre_restaurante"
+                        tools:text="Tipo de comida">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/lugar_txt"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/advent_pro_medium"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tipocomida_txt"
+                        tools:text="LUGAR">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/descripcion_titulo"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:text="@string/txt_descripcion"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/lugar_txt">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/descropcion_txt"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/dimension10dp"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:autoSizeTextType="uniform"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/descripcion_titulo">
+
+                    </TextView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:text="Reservar"
+                android:backgroundTint="@color/azul"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:strokeColor="@color/amarillo"
+                app:strokeWidth="1dp">
+
+            </Button>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:src="@drawable/ic_back">
+
+        </ImageButton>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

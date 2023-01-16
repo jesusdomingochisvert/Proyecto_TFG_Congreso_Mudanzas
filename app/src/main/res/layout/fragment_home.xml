@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+
+            android:id="@+id/imgCarousel_publicidad"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:autoPlay="true"
+            app:autoPlayDelay="4000"
+            app:showNavigationButtons="false"
+            app:showCaption="false"
+            app:showIndicator="false" />
+
+        <TextView
+
+            android:id="@+id/recent_events"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_recent_events"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/imgCarousel_publicidad"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+
+            android:id="@+id/recent_events_show_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/imgCarousel_publicidad"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_show_all"
+            android:textColor="@color/yellow_app"
+            android:textSize="18sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rv_recent_events"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            app:layout_constraintTop_toBottomOf="@+id/recent_events"
+            tools:listitem="@layout/item_recent_events"/>
+
+        <TextView
+
+            android:id="@+id/eat_zones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_eat_zones"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/rv_recent_events"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+
+            android:id="@+id/eat_zones_show_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/rv_recent_events"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_show_all"
+            android:textColor="@color/yellow_app"
+            android:textSize="18sp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rv_eat_zones"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/eat_zones"
+            tools:listitem="@layout/item_eat_zones"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

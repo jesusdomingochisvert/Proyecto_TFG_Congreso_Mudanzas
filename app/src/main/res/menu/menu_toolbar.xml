@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+
+        android:id="@+id/menu_options"
+        android:title="@string/menu_options"
+        android:icon="@drawable/ic_options"
+        app:showAsAction="always">
+
+        <menu>
+
+            <item
+
+                android:id="@+id/menu_log_out"
+                android:title="@string/txt_cerrar_sesión"
+                android:icon="@drawable/ic_login"/>
+
+            <item
+
+                android:id="@+id/menu_dark_mode"
+                android:title="@string/txt_modo_oscuro"
+                android:icon="@drawable/ic_mode_dark"/>
+
+        </menu>
+
+    </item>
+
+</menu>
