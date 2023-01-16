@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.LocationModule
 
 import android.Manifest
 import android.content.Context
@@ -13,6 +13,10 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.congresotfg.mainModule.MainActivity
+import com.example.congresotfg.R
+import com.example.congresotfg.common.utils.LocationApiService
+import com.example.congresotfg.common.utils.RouteResponse
 import com.example.congresotfg.databinding.FragmentLocationBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

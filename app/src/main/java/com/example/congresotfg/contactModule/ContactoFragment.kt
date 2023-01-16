@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.contactModule
 
 import android.content.Intent
 import android.net.Uri

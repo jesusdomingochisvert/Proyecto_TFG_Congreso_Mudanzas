@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.homeModule.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.congresotfg.R
+import com.example.congresotfg.common.entities.RestauranteEntity
+import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.ItemEatZonesBinding
 
 class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEntity>, private var listener: OnClickListener): RecyclerView.Adapter<HomeRestauranteAdapter.ViewHolder>() {

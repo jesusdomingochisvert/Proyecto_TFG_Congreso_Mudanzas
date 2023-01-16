@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.myListModule
 
 import android.content.Context
 import android.content.Intent
@@ -11,10 +11,14 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.common.entities.EventoEntity
+import com.example.congresotfg.common.entities.RestauranteEntity
+import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentMyListBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
+import com.example.congresotfg.myListModule.adapter.MyListEventsAdapter
+import com.example.congresotfg.myListModule.adapter.MyListRestaurantsAdapter
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
-import kotlinx.coroutines.processNextEventInCurrentThread
 
 class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListener {
 

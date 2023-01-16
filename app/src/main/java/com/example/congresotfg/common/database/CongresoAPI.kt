@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.common.database
 
 import android.content.Context
 import com.android.volley.Request
@@ -12,9 +12,9 @@ class CongresoAPI constructor(context: Context) {
         @Volatile
         private var INSTANCE: CongresoAPI? = null
 
-        fun getInstance(context: Context) = INSTANCE?: synchronized(this) {
+        fun getInstance(context: Context) = INSTANCE ?: synchronized(this) {
 
-            INSTANCE?: CongresoAPI(context).also {
+            INSTANCE ?: CongresoAPI(context).also {
 
                 INSTANCE = it
 

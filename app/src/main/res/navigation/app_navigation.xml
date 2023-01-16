@@ -7,49 +7,49 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.congresotfg.Home"
+        android:name="com.example.congresotfg.homeModule.HomeFragment"
         android:label="@string/text_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/location"
-        android:name="com.example.congresotfg.Location"
+        android:name="com.example.congresotfg.LocationModule.Location"
         android:label="@string/text_location"
         tools:layout="@layout/fragment_location" >
     </fragment>
 
     <fragment
         android:id="@+id/like"
-        android:name="com.example.congresotfg.Like"
+        android:name="com.example.congresotfg.likeModule.Like"
         android:label="@string/text_like"
         tools:layout="@layout/fragment_like" />
 
     <fragment
         android:id="@+id/contact"
-        android:name="com.example.congresotfg.ContactoFragment"
+        android:name="com.example.congresotfg.contactModule.ContactoFragment"
         android:label="@string/text_contact"
         tools:layout="@layout/fragment_contacto" />
 
     <fragment
         android:id="@+id/about"
-        android:name="com.example.congresotfg.AboutFragment"
+        android:name="com.example.congresotfg.aboutModule.AboutFragment"
         android:label="@string/text_about"
         tools:layout="@layout/fragment_about" />
 
     <fragment
         android:id="@+id/my_tickets"
-        android:name="com.example.congresotfg.MyTicketFragment"
+        android:name="com.example.congresotfg.myTicketModule.MyTicketFragment"
         android:label="@string/text_my_tickets"
         tools:layout="@layout/fragment_my_ticket" />
     <!--
     <fragment
         android:id="@+id/friends"
-        android:name="com.example.congresotfg.Like"
+        android:name="com.example.congresotfg.likeModule.Like"
         android:label="@string/text_like"
         tools:layout="@layout/fragment_like" />
     -->
     <fragment
         android:id="@+id/my_events"
-        android:name="com.example.congresotfg.MyListFragment"
+        android:name="com.example.congresotfg.myListModule.MyListFragment"
         android:label="@string/text_my_list"
         tools:layout="@layout/fragment_my_list" />
 

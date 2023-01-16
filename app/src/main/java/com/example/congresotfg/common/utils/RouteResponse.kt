@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.common.utils
 
 import com.google.gson.annotations.SerializedName
 

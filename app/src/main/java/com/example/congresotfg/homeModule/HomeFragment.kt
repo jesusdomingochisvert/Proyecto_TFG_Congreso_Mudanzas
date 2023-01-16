@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.homeModule
 
 import android.content.Context
 import android.content.Intent
@@ -9,12 +9,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.common.entities.EventoEntity
+import com.example.congresotfg.common.entities.RestauranteEntity
+import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
+import com.example.congresotfg.homeModule.adapter.HomeEventoAdapter
+import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 
-class Home : Fragment(), OnClickListener {
+class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var binding: FragmentHomeBinding
 

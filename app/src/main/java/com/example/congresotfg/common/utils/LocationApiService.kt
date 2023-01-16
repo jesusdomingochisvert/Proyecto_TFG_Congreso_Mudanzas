@@ -1,4 +1,4 @@
-package com.example.congresotfg
+package com.example.congresotfg.common.utils
 
 import retrofit2.Response
 import retrofit2.http.GET

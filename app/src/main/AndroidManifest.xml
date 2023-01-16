@@ -22,7 +22,7 @@
             android:value="@string/google_maps_key"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".mainModule.MainActivity"
             android:exported="false"
             android:hardwareAccelerated="true"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">

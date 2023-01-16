@@ -6,10 +6,9 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.congresotfg.MainActivity
+import com.example.congresotfg.mainModule.MainActivity
 import com.example.congresotfg.R
 import com.example.congresotfg.databinding.ActivityLoginBinding
-import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 
 
 class LoginActivity : AppCompatActivity() {
