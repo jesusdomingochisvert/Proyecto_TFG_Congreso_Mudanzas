@@ -19,23 +19,17 @@ class HomeInteractor {
 
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null, { response ->
 
-            val status = response.optInt(Constants.STATUS_PROPERTY, Constants.ERROR)
+            val jsonList = response.optJSONArray(null)?.toString()
 
-            if (status == Constants.SUCCESS) {
+            if (jsonList != null) {
 
-                val jsonList = response.optJSONArray(Constants.CONGRESO_PROPERTY)?.toString()
+                val mutableListType = object : TypeToken<MutableList<EventoEntity>>() {}.type
 
-                if (jsonList != null) {
+                eventos = Gson().fromJson(jsonList, mutableListType)
 
-                    val mutableListType = object : TypeToken<MutableList<EventoEntity>>() {}.type
+                callback(eventos)
 
-                    eventos = Gson().fromJson(jsonList, mutableListType)
-
-                    callback(eventos)
-
-                    return@JsonObjectRequest
-
-                }
+                return@JsonObjectRequest
 
             }
 

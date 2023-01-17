@@ -106,7 +106,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
 
-        getRestaurantes()
+        //getRestaurantes()
 
         binding.rvEatZones.apply {
 

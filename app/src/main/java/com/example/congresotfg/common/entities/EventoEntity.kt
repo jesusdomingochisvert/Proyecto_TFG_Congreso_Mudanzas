@@ -3,10 +3,8 @@ package com.example.congresotfg.common.entities
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "EventoEntity")
 data class EventoEntity(
 
-    @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var congresoId: Long,
     var nombre: String,
