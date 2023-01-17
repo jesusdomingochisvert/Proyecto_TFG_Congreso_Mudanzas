@@ -46,8 +46,6 @@ class HomeViewModel: ViewModel() {
 
     fun getEventos(): LiveData<MutableList<EventoEntity>> {
 
-        Log.i("Api", eventos.toString())
-
         return eventos
 
     }
