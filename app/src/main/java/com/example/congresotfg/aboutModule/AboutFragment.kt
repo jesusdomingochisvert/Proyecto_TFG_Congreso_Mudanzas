@@ -18,7 +18,7 @@ class AboutFragment : Fragment() {
 
         return binding.root
 
-        //HOAAAAAAAAAAAAAAAAAAAAAAAA
+        //HOLA PRUEBA
 
     }
 
