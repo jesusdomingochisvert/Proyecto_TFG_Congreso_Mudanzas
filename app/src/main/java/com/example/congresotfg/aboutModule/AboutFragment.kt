@@ -18,9 +18,9 @@ class AboutFragment : Fragment() {
 
         return binding.root
 
-        //HOLA PRUEBA
+        //HOLA 2
 
-        //OFSHTIASH
+        
 
     }
 
