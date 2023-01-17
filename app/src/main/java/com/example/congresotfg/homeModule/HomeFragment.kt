@@ -90,8 +90,6 @@ class HomeFragment : Fragment(), OnClickListener {
 
         //getEventos()
 
-        setupViewModel()
-
         binding.rvRecentEvents.apply {
 
             layoutManager = linearLayoutManager

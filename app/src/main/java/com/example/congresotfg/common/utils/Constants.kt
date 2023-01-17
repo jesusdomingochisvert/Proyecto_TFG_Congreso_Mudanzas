@@ -2,7 +2,7 @@ package com.example.congresotfg.common.utils
 
 object Constants {
 
-    const val CONGRESO_URL = "https://congreso-api.free.beeceptor.com"
+    const val CONGRESO_URL = "https://apicei58.ieslasenia.org"
 
     const val GET_EVENTOS_PATH = "/eventos"
     const val GET_RESTAURANTES_PATH = "/puestosComida"
