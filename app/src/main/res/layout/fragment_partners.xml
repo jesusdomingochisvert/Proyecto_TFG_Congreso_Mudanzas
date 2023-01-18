@@ -7,30 +7,7 @@
     android:id="@+id/frame_partners"
     tools:context=".partnersFragmentModule.PartnersFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/barraTop"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/azul">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/text_partners"
-            android:textColor="@color/white"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-        </TextView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.core.widget.NestedScrollView
-        app:layout_constraintTop_toBottomOf="@id/barraTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
