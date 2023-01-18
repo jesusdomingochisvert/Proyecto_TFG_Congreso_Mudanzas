@@ -5,11 +5,20 @@ data class AsistenteEntity(
     var id: Long = 0,
     var nombre: String,
     var apellidos: String,
-    var fechaTicket: String,
+    var nombreUsuario : String,
+    var contrasenya: String,
+    var codigoPostal : String,
+    var provincia : String,
+    var genero : String,
+    var biografia : String,
+    var correo : String,
+    //var bono : MutableList<BonoEntity>,
+
 
 ) {
 
-    constructor() : this(nombre = "", apellidos = "", fechaTicket = "")
+    constructor() : this(nombre = "", apellidos = "", nombreUsuario = "", contrasenya = "",
+        codigoPostal = "", provincia = "", genero = "", biografia = "", correo = "")
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
