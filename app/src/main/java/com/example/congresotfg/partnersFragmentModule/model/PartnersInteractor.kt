@@ -1,6 +1,7 @@
 package com.example.congresotfg.homeModule.model
 
 import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.EventoEntity
@@ -14,37 +15,27 @@ class PartnersInteractor {
 
     fun getSocios(callback: (MutableList<SocioEntity>) -> Unit) {
 
-        val url = Constants.CONGRESO_URL + Constants.GET_EVENTOS_PATH
+        val url = Constants.CONGRESO_URL + Constants.GET_ALLPARTNERS_PATH
 
         var socios = mutableListOf<SocioEntity>()
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null, { response ->
 
-                val jsonList = response.optJSONArray("socio")?.toString()
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
 
-                if (jsonList != null) {
+            val typeToken = object : TypeToken<MutableList<SocioEntity>>() {}.type
 
-                    val mutableListType = object : TypeToken<MutableList<SocioEntity>>() {}.type
-
-                    socios = Gson().fromJson(jsonList, mutableListType)
-
-                    callback(socios)
-
-                    return@JsonObjectRequest
-                }
+            socios = Gson().fromJson(response.toString(), typeToken)
 
             callback(socios)
 
+            return@JsonArrayRequest
         }, {
-
             it.printStackTrace()
 
             callback(socios)
-
         })
 
-        CongresoApplication.congresoAPI.addToRequestQueue(jsonObjectRequest)
-
+        CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
     }
 
 }

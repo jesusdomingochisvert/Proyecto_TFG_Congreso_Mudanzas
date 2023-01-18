@@ -9,6 +9,21 @@ data class SocioEntity(
 ){
     constructor() : this(cargo = "", asistente = AsistenteEntity(), empresa = EmpresaEntity())
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as SocioEntity
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
 
 }
 

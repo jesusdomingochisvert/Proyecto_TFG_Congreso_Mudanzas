@@ -17,24 +17,21 @@ class HomeInteractor {
 
         val url = Constants.CONGRESO_URL + Constants.GET_EVENTOS_PATH
 
-        var eventos = mutableListOf<EventoEntity>()
+        var eventosList = mutableListOf<EventoEntity>()
 
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
 
             val typeToken = object : TypeToken<MutableList<EventoEntity>>() {}.type
 
-            eventos = Gson().fromJson(response.toString(), typeToken)
+            eventosList = Gson().fromJson(response.toString(), typeToken)
 
-            callback(eventos)
+            callback(eventosList)
 
             return@JsonArrayRequest
-
         }, {
-
             it.printStackTrace()
 
-            callback(eventos)
-
+            callback(eventosList)
         })
 
         CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)

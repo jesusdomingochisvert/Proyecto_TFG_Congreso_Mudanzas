@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:layout_margin="16dp">
+    android:layout_width="200dp"
+    android:layout_height="170dp"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="20dp"
+    android:elevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -20,18 +21,27 @@
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_bright"/>
 
-        <TextView
-
-            android:id="@+id/rv_recent_events_nombre_evento"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="30dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/text_nombre_evento"
-            android:textAlignment="center"
-            android:background="@color/gris_claro"/>
+            android:padding="5dp"
+            android:background="#51FFFFFF"
+            >
+
+            <TextView
+                android:id="@+id/rv_recent_events_nombre_evento"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/text_nombre_evento"
+                android:textAlignment="center"
+
+                />
+
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
 

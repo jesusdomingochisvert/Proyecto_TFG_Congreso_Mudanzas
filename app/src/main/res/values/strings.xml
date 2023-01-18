@@ -89,4 +89,5 @@
     <string name="text_lugar_congreso_descripcion">El hotel GF Victoria está situado en Costa Adeje, a solo 150 metros de la playa del Duque, y ofrece 4 zonas de baño y dos restaurantes.</string>
     <string name="text_formacion_suites_descripcion">Las 242 suites disponen de un dormitorio con bañoprivado y zona de salón con aseo separado.</string>
     <string name="text_fecha_ticket_asistente">Fecha Ticket</string>
+    <string name="main_error_website">Enlace erróneo</string>
 </resources>
