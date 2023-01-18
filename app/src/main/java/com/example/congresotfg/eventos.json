@@ -1,0 +1,156 @@
+[
+  {
+    "id": 1,
+    "nombre": "Materiales para la mudanza",
+    "descripcion": "Daremos una amplia explicación sobre los distintos tipos de materiales y la importancia que tienen para su uso. Enseñaremos sus diferencias y pondremos en común los tipos de materiales utilizados por las empresas que figuran en el congreso.",
+    "lugar": "Zona A",
+    "horaInicio": "1970-01-01T10:30:00+00:00",
+    "horaFin": "1970-01-01T11:30:00+00:00",
+    "dia": 1,
+    "mes": 5,
+    "imagen": "https://www.upmoving.com/site/views/data/noticias/NOT-1.png",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Cómo presupuestar una mudanza",
+    "descripcion": "En esta ponencia se aprenderán conceptos básicos sobre finanzas y sobre presupuestación con el objetivo de mantener un presupuesto estable y una economía estable en los proyectos.",
+    "lugar": "Zona B",
+    "horaInicio": "1970-01-01T12:00:00+00:00",
+    "horaFin": "1970-01-01T13:00:00+00:00",
+    "dia": 1,
+    "mes": 5,
+    "imagen": "https://www.amsegoviana.com/uploads/cuanto-cuesta-una-mudanza-en-madrid.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Los beneficios del transporte",
+    "descripcion": "Se tratarán una serie de método de transporte, sus beneficios y viabilidad. Además, se llevará a cabo un video colaborativo con los asistentes para explicar los métodos de transporte.",
+    "lugar": "Zona A",
+    "horaInicio": "1970-01-01T16:30:00+00:00",
+    "horaFin": "1970-01-01T17:00:00+00:00",
+    "dia": 3,
+    "mes": 5,
+    "imagen": "https://www.apollosuniverse.com/wp-content/uploads/2021/06/evento-junio-980x451.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "La logística y su organización",
+    "descripcion": "La logística siempre es la parte más complicada de una mudanza. LLevar la organización de la empresa no es fácil, y por ello realizaremos esta ponencia para desarrollar ideas básicas de los problemas  que pueden surgir.",
+    "lugar": "Zona A",
+    "horaInicio": "1970-01-01T19:00:00+00:00",
+    "horaFin": "1970-01-01T19:30:00+00:00",
+    "dia": 1,
+    "mes": 5,
+    "imagen": "https://api-static.eventsip.com/portals/files/63159/63159.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Concentración y percepción",
+    "descripcion": "Llevar una empresa de mudanzas puede parecer complicado. En esta ponencia trataremos la concentración de los empresarios y cómo llevar la empresa de manera positiva.",
+    "lugar": "Zona B",
+    "horaInicio": "1970-01-01T19:30:00+00:00",
+    "horaFin": "1970-01-01T20:30:00+00:00",
+    "dia": 1,
+    "mes": 5,
+    "imagen": "https://educacion2.com/wp-content/uploads/2019/06/consejos-para-estudiar-768x512.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Camiones y transporte",
+    "descripcion": "Evaluaremos todos los medios de transporte de las mudanzas y haremos un pequeño taller en el que veremos cuáles son los mejores transportes para cada tipo de mudanza.",
+    "lugar": "Zona C",
+    "horaInicio": "1970-01-01T10:00:00+00:00",
+    "horaFin": "1970-01-01T11:00:00+00:00",
+    "dia": 2,
+    "mes": 5,
+    "imagen": "https://empresas.infoempleo.com/hrtrends/media/2017/07/Claves-para-la-organizaci%C3%B3n-de-eventos-de-%C3%A9xito-2.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Riesgos laborales",
+    "descripcion": "Trataremos los distintos riesgos laborales que se pueden encontrar en el trabajo y explicaremos las medidas a adoptar con el fin de prevenirlos.",
+    "lugar": "Zona C",
+    "horaInicio": "1970-01-01T11:30:00+00:00",
+    "horaFin": "1970-01-01T12:00:00+00:00",
+    "dia": 2,
+    "mes": 5,
+    "imagen": "https://www.ceupe.com/images/easyblog_articles/1409/b2ap3_large_trabajador-con-medidas-prl.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Zona de bajas emisiones",
+    "descripcion": "Hablaremos de las zonas y los diferentes peligros que pueden tener. Desarrollaremos una descripción de con qué vehículos se puede entrar a qué zona y las limitaciones que pueden tener.",
+    "lugar": "Zona C",
+    "horaInicio": "1970-01-01T12:30:00+00:00",
+    "horaFin": "1970-01-01T13:00:00+00:00",
+    "dia": 2,
+    "mes": 5,
+    "imagen": "https://www.kunak.es/wp-content/uploads/2021/06/zona-bajas-emisiones.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 9,
+    "nombre": "Renovaciones de flota",
+    "descripcion": "Hablaremos sobre vehículos híbridos, eléctricos y opciones de mercado disponibles actualmente que tienen como objetivo mejorar la calidad de vida, comodidad de los conductores y ser aptos para el plan de la Agenda 2030.",
+    "lugar": "Zona B",
+    "horaInicio": "1970-01-01T16:30:00+00:00",
+    "horaFin": "1970-01-01T17:30:00+00:00",
+    "dia": 3,
+    "mes": 5,
+    "imagen": "https://www.buffettulipas.com.br/wp-content/uploads/2020/03/Evento_corporativo.jpg",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 10,
+    "nombre": "Marketing online",
+    "descripcion": "Cómo promocionarse en las redes online hoy en día. Os proporcionaremos una serie de pautas para captar la atención de los clientes y las marcas.",
+    "lugar": "Zona B",
+    "horaInicio": "1970-01-01T18:30:00+00:00",
+    "horaFin": "1970-01-01T18:30:00+00:00",
+    "dia": 2,
+    "mes": 5,
+    "imagen": "https://static.wixstatic.com/media/7ba241_91dffd9c960d4078b0746669c8903294~mv2.png/v1/fill/w_672,h_378,al_c,lg_1,q_85,enc_auto/7ba241_91dffd9c960d4078b0746669c8903294~mv2.png",
+    "congreso": [
+
+    ]
+  },
+  {
+    "id": 11,
+    "nombre": "Mesa redonda de ideas",
+    "descripcion": "Cómo Fedem puede crecer tanto a nivel vertical como horizontal. Los que ya están dentro cada vez se vayan haciendo más grandes y que poco a poco vayan teniendo más miembros.",
+    "lugar": "Zona A",
+    "horaInicio": "1970-01-01T11:30:00+00:00",
+    "horaFin": "1970-01-01T12:30:00+00:00",
+    "dia": 3,
+    "mes": 5,
+    "imagen": "https://blog.visitacostadelsol.com/hubfs/CDS%20-%20blogpost%20123%20a.jpg",
+    "congreso": [
+
+    ]
+  }
+] 

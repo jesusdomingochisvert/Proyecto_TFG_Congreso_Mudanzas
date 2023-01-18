@@ -1,6 +1,7 @@
 package com.example.congresotfg.homeModule.model
 
 import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.EventoEntity
@@ -17,23 +18,15 @@ class HomeInteractor {
 
         var eventos = mutableListOf<EventoEntity>()
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null, { response ->
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
 
-            val jsonList = response.optJSONArray(null)?.toString()
+            val typeToken = object : TypeToken<MutableList<EventoEntity>>() {}.type
 
-            if (jsonList != null) {
-
-                val mutableListType = object : TypeToken<MutableList<EventoEntity>>() {}.type
-
-                eventos = Gson().fromJson(jsonList, mutableListType)
-
-                callback(eventos)
-
-                return@JsonObjectRequest
-
-            }
+            eventos = Gson().fromJson(response.toString(), typeToken)
 
             callback(eventos)
+
+            return@JsonArrayRequest
 
         }, {
 
@@ -43,7 +36,7 @@ class HomeInteractor {
 
         })
 
-        CongresoApplication.congresoAPI.addToRequestQueue(jsonObjectRequest)
+        CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
 
     }
 
