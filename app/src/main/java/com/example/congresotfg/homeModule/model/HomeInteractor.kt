@@ -17,21 +17,23 @@ class HomeInteractor {
 
         val url = Constants.CONGRESO_URL + Constants.GET_EVENTOS_PATH
 
-        var eventosList = mutableListOf<EventoEntity>()
+        var eventos = mutableListOf<EventoEntity>()
 
         val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
 
             val typeToken = object : TypeToken<MutableList<EventoEntity>>() {}.type
 
-            eventosList = Gson().fromJson(response.toString(), typeToken)
+            eventos = Gson().fromJson(response.toString(), typeToken)
 
-            callback(eventosList)
+            callback(eventos)
 
             return@JsonArrayRequest
         }, {
+
             it.printStackTrace()
 
-            callback(eventosList)
+            callback(eventos)
+
         })
 
         CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
@@ -44,29 +46,15 @@ class HomeInteractor {
 
         var restaurantes = mutableListOf<RestauranteEntity>()
 
-        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null, { response ->
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
 
-            val status = response.optInt(Constants.STATUS_PROPERTY, Constants.ERROR)
+            val typeToken = object : TypeToken<MutableList<RestauranteEntity>>() {}.type
 
-            if (status == Constants.SUCCESS) {
-
-                val jsonList = response.optJSONArray(Constants.CONGRESO_PROPERTY)?.toString()
-
-                if (jsonList != null) {
-
-                    val mutableListType = object : TypeToken<MutableList<RestauranteEntity>>() {}.type
-
-                    restaurantes = Gson().fromJson(jsonList, mutableListType)
-
-                    callback(restaurantes)
-
-                    return@JsonObjectRequest
-
-                }
-
-            }
+            restaurantes = Gson().fromJson(response.toString(), typeToken)
 
             callback(restaurantes)
+
+            return@JsonArrayRequest
 
         }, {
 
@@ -76,7 +64,7 @@ class HomeInteractor {
 
         })
 
-        CongresoApplication.congresoAPI.addToRequestQueue(jsonObjectRequest)
+        CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
 
     }
 
