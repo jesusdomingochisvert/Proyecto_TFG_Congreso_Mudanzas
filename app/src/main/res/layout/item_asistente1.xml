@@ -41,7 +41,7 @@
     </TextView>
 
     <TextView
-        android:id="@+id/nombre_empresa"
+        android:id="@+id/empresa"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/livvic"
@@ -55,6 +55,7 @@
     </TextView>
 
     <TextView
+        android:id="@+id/cargo_empresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/livvic_thin"

@@ -12,13 +12,14 @@ data class AsistenteEntity(
     var genero : String,
     var biografia : String,
     var correo : String,
+    var imagen : String
     //var bono : MutableList<BonoEntity>,
 
 
 ) {
 
     constructor() : this(nombre = "", apellidos = "", nombreUsuario = "", contrasenya = "",
-        codigoPostal = "", provincia = "", genero = "", biografia = "", correo = "")
+        codigoPostal = "", provincia = "", genero = "", biografia = "", correo = "", imagen = "")
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
