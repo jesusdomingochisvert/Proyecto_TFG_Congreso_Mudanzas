@@ -178,7 +178,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.drawer_friends -> {
-                Toast.makeText(this, "Friends", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.partners)
+
+                binding.customToolbar.txtTitleToolbar.text = "Partners"
             }
 
             R.id.drawer_my_events -> {

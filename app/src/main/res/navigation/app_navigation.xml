@@ -53,4 +53,10 @@
         android:label="@string/text_my_list"
         tools:layout="@layout/fragment_my_list" />
 
+    <fragment
+        android:id="@+id/partners"
+        android:name="com.example.congresotfg.partnersFragmentModule.PartnersFragment"
+        android:label="@string/text_partners"
+        tools:layout="@layout/fragment_partners" />
+
 </navigation>
