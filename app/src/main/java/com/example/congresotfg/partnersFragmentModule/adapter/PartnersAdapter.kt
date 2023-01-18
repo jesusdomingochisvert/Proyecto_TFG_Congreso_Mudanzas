@@ -1,9 +1,14 @@
 package com.example.congresotfg.partnersFragmentModule.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.text.SpannableString
+import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -40,6 +45,10 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
             with(binding) {
                 nombreUsuario.text=socio.asistente.nombreUsuario
                 empresa.text=socio.empresa.nombre
+
+                val mSpannableString = SpannableString(socio.empresa.nombre)
+                mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
+                empresa.text = mSpannableString
                 cargoEmpresa.text=socio.cargo
 
             }
@@ -73,9 +82,9 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
             with(binding) {
 
                 root.setOnClickListener {
-
-                    listener.onClickSocio(socioEntity)
-
+                    clEmpresa.setOnClickListener(){
+                        listener.onClickEmpresa(socioEntity.empresa)
+                    }
                 }
 
             }

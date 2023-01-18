@@ -1,16 +1,20 @@
 package com.example.congresotfg.partnersFragmentModule
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.R
+import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.SocioEntity
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.databinding.FragmentMyTicketBinding
@@ -77,7 +81,7 @@ class PartnersFragment : Fragment(),SocioListener {
 
         partnersAdapter = PartnersAdapter(mutableListOf(), this)
 
-        linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
+        linearLayoutManager = LinearLayoutManager(fragmentContext)
 
 
         binding.rvPartners.apply {
@@ -95,6 +99,18 @@ class PartnersFragment : Fragment(),SocioListener {
 
         startActivity(intent)
 
+    }
+
+    override fun onClickEmpresa(empresaEntity: EmpresaEntity) {
+        val websiteIntent = Intent().apply {
+            action = Intent.ACTION_VIEW
+            data = Uri.parse(empresaEntity.enlace)
+        }
+        try{
+            startActivity(websiteIntent)
+        }catch (error: ActivityNotFoundException){
+            Toast.makeText(requireActivity(), R.string.main_error_website, Toast.LENGTH_LONG).show()
+        }
     }
 
 }

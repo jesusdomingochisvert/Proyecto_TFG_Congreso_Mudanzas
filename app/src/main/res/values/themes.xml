@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CongresoTFG" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.CongresoTFG" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#26418F</item>
         <item name="colorPrimaryVariant">#26418F</item>

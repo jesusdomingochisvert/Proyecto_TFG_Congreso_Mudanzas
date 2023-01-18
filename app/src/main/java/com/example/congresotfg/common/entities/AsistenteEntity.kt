@@ -13,8 +13,6 @@ data class AsistenteEntity(
     var biografia : String,
     var correo : String,
     var imagen : String
-    //var bono : MutableList<BonoEntity>,
-
 
 ) {
 
