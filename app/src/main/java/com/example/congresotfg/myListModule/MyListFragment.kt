@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.common.entities.EventoEntity
@@ -18,6 +19,7 @@ import com.example.congresotfg.databinding.FragmentMyListBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
 import com.example.congresotfg.myListModule.adapter.MyListEventsAdapter
 import com.example.congresotfg.myListModule.adapter.MyListRestaurantsAdapter
+import com.example.congresotfg.myListModule.viewModel.MyListViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 
 class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListener {
@@ -34,6 +36,16 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     private lateinit var search: SearchView
 
+    private lateinit var myListViewModel: MyListViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        super.onCreate(savedInstanceState)
+
+        myListViewModel = ViewModelProvider(requireActivity())[MyListViewModel::class.java]
+
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         binding = FragmentMyListBinding.inflate(inflater, container, false)
@@ -45,6 +57,14 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
         setupSearchView()
 
         return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(view, savedInstanceState)
+
+
 
     }
 
@@ -64,7 +84,9 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
             linearLayoutManagerEvents = LinearLayoutManager(fragmentContext)
 
-            getEventos()
+            //getEventos()
+
+            setupEventosViewModel()
 
             binding.rvMyEvents.apply {
 
@@ -84,7 +106,9 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
             linearLayoutManagerRestaurants = LinearLayoutManager(fragmentContext)
 
-            getRestaurantes()
+            //getRestaurantes()
+
+            setupRestaurantesViewModel()
 
             binding.rvMyRestaurants.apply {
 
@@ -95,6 +119,26 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
                 visibility = View.VISIBLE
 
             }
+
+        }
+
+    }
+
+    private fun setupEventosViewModel() {
+
+        myListViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
+
+            myListEventsAdapter.setEvento(eventos)
+
+        }
+
+    }
+
+    private fun setupRestaurantesViewModel() {
+
+        myListViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
+
+            myListRestaurantsAdapter.setRestaurante(restaurantes)
 
         }
 
@@ -168,47 +212,55 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     private fun filterList(newText: String) {
 
-        val filteredListEventos = mutableListOf<EventoEntity>()
+        myListViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
 
-        for (e in getEventos()) {
+            val filteredListEventos = mutableListOf<EventoEntity>()
 
-            if (e.nombre.lowercase().contains(newText.lowercase())) {
+            for (e in eventos) {
 
-                filteredListEventos.add(e)
+                if (e.nombre.lowercase().contains(newText.lowercase())) {
+
+                    filteredListEventos.add(e)
+
+                }
+
+            }
+
+            if (filteredListEventos.isEmpty()) {
+
+                Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
+
+            } else {
+
+                myListEventsAdapter.setFilteredList(filteredListEventos)
 
             }
 
         }
 
-        if (filteredListEventos.isEmpty()) {
+        myListViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
 
-            Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
+            val filteredListRestaurantes = mutableListOf<RestauranteEntity>()
 
-        } else {
+            for (r in restaurantes) {
 
-            myListEventsAdapter.setFilteredList(filteredListEventos)
+                if (r.nombre.lowercase().contains(newText.lowercase())) {
 
-        }
+                    filteredListRestaurantes.add(r)
 
-        val filteredListRestaurantes = mutableListOf<RestauranteEntity>()
-
-        for (r in getRestaurantes()) {
-
-            if (r.nombre.lowercase().contains(newText.lowercase())) {
-
-                filteredListRestaurantes.add(r)
+                }
 
             }
 
-        }
+            if (filteredListRestaurantes.isEmpty()) {
 
-        if (filteredListRestaurantes.isEmpty()) {
+                Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
 
-            Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
+            } else {
 
-        } else {
+                myListRestaurantsAdapter.setFilteredList(filteredListRestaurantes)
 
-            myListRestaurantsAdapter.setFilteredList(filteredListRestaurantes)
+            }
 
         }
 

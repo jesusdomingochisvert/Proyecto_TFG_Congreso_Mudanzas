@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var bottomNav: BottomNavigationView
 
+    private lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -48,6 +51,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer = binding.drawerMain
         navController = findNavController(R.id.frame_main)
         navDrawer = binding.nvMain
+
+        toggle = ActionBarDrawerToggle(this, drawer, R.string.openToggle, R.string.closeToggle)
+
+        drawer.addDrawerListener(toggle)
+
+        toggle.syncState()
 
         setSupportActionBar(toolbar)
 
@@ -95,11 +104,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 R.id.menu_like -> {
 
-                    navController.navigate(R.id.like)
+                    navController.navigate(R.id.my_events)
 
-                    binding.customToolbar.txtTitleToolbar.text = "Like"
+                    binding.customToolbar.txtTitleToolbar.text = "My List"
 
-                    Toast.makeText(this, "Like", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "My List", Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -122,6 +131,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (toggle.onOptionsItemSelected(item)) {
+
+            return true
+
+        }
 
         when(item.itemId) {
 
@@ -181,16 +196,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navController.navigate(R.id.partners)
 
                 binding.customToolbar.txtTitleToolbar.text = "Partners"
-            }
-
-            R.id.drawer_my_events -> {
-
-                navController.navigate(R.id.my_events)
-
-                binding.customToolbar.txtTitleToolbar.text = "My List"
-
-                Toast.makeText(this, "My List", Toast.LENGTH_SHORT).show()
-
             }
 
         }

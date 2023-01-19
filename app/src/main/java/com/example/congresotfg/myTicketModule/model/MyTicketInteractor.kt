@@ -13,7 +13,7 @@ import org.json.JSONObject
 
 class MyTicketInteractor {
 
-    fun getAsistente(id: Long, callback: (AsistenteEntity) -> Unit) {
+    fun getAsistente(id: Long? = null, callback: (AsistenteEntity) -> Unit) {
 
         val url = Constants.CONGRESO_URL + Constants.GET_ASISTENTE_PATH.replace("{id}", id.toString())
 
@@ -34,7 +34,7 @@ class MyTicketInteractor {
             it.printStackTrace()
 
             callback(asistente)
-            
+
         })
 
         CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)

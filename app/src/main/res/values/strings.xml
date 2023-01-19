@@ -90,4 +90,6 @@
     <string name="text_formacion_suites_descripcion">Las 242 suites disponen de un dormitorio con bañoprivado y zona de salón con aseo separado.</string>
     <string name="text_fecha_ticket_asistente">Fecha Ticket</string>
     <string name="main_error_website">Enlace erróneo</string>
+    <string name="openToggle">open</string>
+    <string name="closeToggle">close</string>
 </resources>

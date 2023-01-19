@@ -29,11 +29,4 @@
 
         />
 
-    <item
-
-        android:id="@+id/drawer_my_events"
-        android:title="@string/text_my_list"
-
-        />
-
 </menu>
