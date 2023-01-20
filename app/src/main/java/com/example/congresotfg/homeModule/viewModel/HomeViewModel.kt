@@ -1,24 +1,26 @@
 package com.example.congresotfg.homeModule.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.congresotfg.common.entities.EventoEntity
+import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.homeModule.model.HomeInteractor
+import kotlinx.coroutines.launch
 
 class HomeViewModel: ViewModel() {
 
-    private var eventosList: MutableList<EventoEntity>
     private var restaurantesList: MutableList<RestauranteEntity>
+    private var patrocinadoresList: MutableList<PatrocinadorEntity>
 
     private var interactor: HomeInteractor
 
     init {
 
-        eventosList = mutableListOf()
         restaurantesList = mutableListOf()
+        patrocinadoresList = mutableListOf()
 
         interactor = HomeInteractor()
 
@@ -44,9 +46,25 @@ class HomeViewModel: ViewModel() {
 
     }
 
+    private val patrocinadores: MutableLiveData<MutableList<PatrocinadorEntity>> by lazy {
+
+        MutableLiveData<MutableList<PatrocinadorEntity>>().also {
+
+            loadPatrocinadores()
+
+        }
+
+    }
+
     fun getEventos(): LiveData<MutableList<EventoEntity>> {
 
         return eventos
+
+    }
+
+    fun getPatrocinadores(): LiveData<MutableList<PatrocinadorEntity>> {
+
+        return patrocinadores
 
     }
 
@@ -62,7 +80,6 @@ class HomeViewModel: ViewModel() {
 
             eventos.value = it
 
-            eventosList = it
 
         }
 
@@ -76,6 +93,17 @@ class HomeViewModel: ViewModel() {
 
             restaurantesList = it
 
+        }
+
+    }
+
+    private fun loadPatrocinadores() {
+        viewModelScope.launch {
+            interactor.getPatrocinadores {
+
+                patrocinadores.value = it
+
+            }
         }
 
     }
