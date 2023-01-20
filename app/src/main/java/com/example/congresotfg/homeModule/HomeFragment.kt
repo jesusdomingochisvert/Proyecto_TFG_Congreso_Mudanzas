@@ -3,15 +3,18 @@ package com.example.congresotfg.homeModule
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock.sleep
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.common.entities.EventoEntity
+import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
@@ -21,6 +24,8 @@ import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
+import java.lang.Thread.sleep
+import java.sql.Time
 
 class HomeFragment : Fragment(), OnClickListener {
 
@@ -156,22 +161,21 @@ class HomeFragment : Fragment(), OnClickListener {
 
         val carousel = binding.imgCarouselPublicidad
 
-        val img1 = CarouselItem("https://www.cupraofficial.es/content/dam/public/cupra-website/generic/rrss-share/cupra-logo-facebook-og.jpg", "Cupra")
-        val img2 = CarouselItem("https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honda.svg/2560px-Honda.svg.png", "Honda")
-        val img3 = CarouselItem("https://upload.wikimedia.org/wikipedia/commons/9/94/ToyotaLogoRedVer.svg", "Toyota")
+        homeViewModel.getPatrocinadores().observe(viewLifecycleOwner) { patrocinadores ->
+            for (p in patrocinadores){
+                val imagen = CarouselItem(p.empresaCif.logo,p.empresaCif.nombre)
+                images.add(imagen)
 
-        images.add(img1)
-        images.add(img2)
-        images.add(img3)
+            }
+            carousel.addData(images)
+        }
 
-        carousel.addData(images)
 
     }
 
     override fun onClickEvento(eventoEntity: EventoEntity) {
 
         val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
-
         startActivity(intent)
 
     }

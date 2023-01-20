@@ -1,15 +1,19 @@
 package com.example.congresotfg.homeModule.model
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.EventoEntity
+import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.delay
 
 class HomeInteractor {
 
@@ -67,5 +71,34 @@ class HomeInteractor {
         CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
 
     }
+
+    fun getPatrocinadores(callback: (MutableList<PatrocinadorEntity>) -> Unit) {
+
+        val url = Constants.CONGRESO_URL + Constants.GET_PATROCINADORES_PATH
+
+        var patrocinadores = mutableListOf<PatrocinadorEntity>()
+
+        val jsonArrayRequest = JsonArrayRequest(Request.Method.GET, url, null, { response ->
+
+            val typeToken = object : TypeToken<MutableList<PatrocinadorEntity>>() {}.type
+
+            patrocinadores = Gson().fromJson(response.toString(), typeToken)
+
+            callback(patrocinadores)
+
+            return@JsonArrayRequest
+
+        }, {
+
+            it.printStackTrace()
+
+            callback(patrocinadores)
+
+        })
+
+        CongresoApplication.congresoAPI.addToRequestQueue(jsonArrayRequest)
+
+    }
+
 
 }

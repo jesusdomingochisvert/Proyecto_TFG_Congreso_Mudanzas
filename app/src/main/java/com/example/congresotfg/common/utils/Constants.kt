@@ -10,4 +10,7 @@ object Constants {
     const val GET_ALLPARTNERS_PATH = "/socios"
 
 
+    const val GET_PATROCINADORES_PATH = "/patrocinadores"
+
+
 }

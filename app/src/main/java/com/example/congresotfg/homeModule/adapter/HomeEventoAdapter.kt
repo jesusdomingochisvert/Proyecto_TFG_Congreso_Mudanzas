@@ -37,7 +37,7 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
             with(binding) {
 
                 rvRecentEventsNombreEvento.text = evento.nombre
-                rvRecentEventsHoraInicio.text = evento.hora_inicio
+                rvRecentEventsHoraInicio.text = evento.horaInicio
 
             }
 
@@ -70,9 +70,7 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
             with(binding) {
 
                 root.setOnClickListener {
-
                     listener.onClickEvento(eventoEntity)
-
                 }
 
             }
