@@ -25,8 +25,6 @@ class MyTicketFragment : Fragment() {
 
     private var asistente: AsistenteEntity? = null
 
-    private var isEditMode = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)

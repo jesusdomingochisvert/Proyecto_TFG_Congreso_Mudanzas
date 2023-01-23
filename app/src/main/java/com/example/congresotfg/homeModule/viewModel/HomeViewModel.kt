@@ -1,5 +1,6 @@
 package com.example.congresotfg.homeModule.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
+import com.example.congresotfg.homeModule.model.EventoResponse
 import com.example.congresotfg.homeModule.model.HomeInteractor
 import kotlinx.coroutines.launch
 
@@ -23,6 +25,16 @@ class HomeViewModel: ViewModel() {
         patrocinadoresList = mutableListOf()
 
         interactor = HomeInteractor()
+
+    }
+
+    private val evento: MutableLiveData<EventoResponse> by lazy {
+
+        MutableLiveData<EventoResponse>().also {
+
+
+
+        }
 
     }
 
@@ -56,6 +68,12 @@ class HomeViewModel: ViewModel() {
 
     }
 
+    fun getEvento(id: String? = null): LiveData<EventoResponse> {
+
+        return evento
+
+    }
+
     fun getEventos(): LiveData<MutableList<EventoEntity>> {
 
         return eventos
@@ -71,6 +89,20 @@ class HomeViewModel: ViewModel() {
     fun getRestaurantes(): LiveData<MutableList<RestauranteEntity>> {
 
         return restaurantes
+
+    }
+
+    fun loadEvento(id: String) {
+
+        Log.i("IDIDIDID", "OK3")
+
+        interactor.getEvento(id) {
+
+            evento.value = it
+
+            Log.i("IDIDIDID", "OK2")
+
+        }
 
     }
 
