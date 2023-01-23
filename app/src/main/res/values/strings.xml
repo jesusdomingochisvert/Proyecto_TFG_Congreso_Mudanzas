@@ -54,9 +54,9 @@
     <string name="text_send_email">Send Email</string>
     <string name="text_phone_number_contact">616 42 90 25</string>
     <string name="text_number_contact">987 65 43 21</string>
-    <string name="text_email_contact">laura1028494@gmail.com</string>
+    <string name="text_email_contact">fedemcomunicacion@gmail.com</string>
     <string name="text_que_somos">Qué Somos</string>
-    <string name="text_formacion_suites">Formacion</string>
+    <string name="text_suites">Nuestras suites</string>
     <string name="text_federacion">Federación Española de Empresas de Mudanzas</string>
     <string name="text_lugar_congreso">Lugar Congreso</string>
     <string name="text_id_asistente">ID</string>
@@ -94,4 +94,10 @@
     <string name="openToggle">open</string>
     <string name="closeToggle">close</string>
     <string name="text_nombre_eatzone">Nombre restaurante</string>
+    <string name="ts_txt5">De esta forma nuestra compañía se responsabiliza en el servicio postventa de cualquier problema que pueda surgir, mejorando y modificando cualquier equivocación.</string>
+    <string name="ts_txt4">La empresa ofrece calidad y confianza a todos los clientes, garantizando un bien trabajo libre de todos los errores posibles que puedan suponer fallos en los servicios.</string>
+    <string name="ts_txt3">Garantía de nuestros servicios</string>
+    <string name="ts_txt2">En nuestra empresa tratamos de conseguir que los servicios sean lo más accesible y sencillos de utilizar posible para las empresas y usuarios.</string>
+    <string name="ts_txt1">Somos una start-up de diseño multiplataforma con sede en Valencia. Diseñamos principalmente páginas web y aplicaciones android.</string>
+    <string name="titulo_techstorm">TECHSTORM</string>
 </resources>
