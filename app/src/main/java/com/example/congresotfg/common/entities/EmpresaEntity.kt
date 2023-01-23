@@ -1,10 +1,8 @@
 package com.example.congresotfg.common.entities
 
-import androidx.room.PrimaryKey
 
 data class EmpresaEntity(
 
-    @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     var nombre:String,
     var enlace:String,
