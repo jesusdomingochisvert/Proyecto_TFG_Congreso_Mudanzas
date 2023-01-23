@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         toggle = ActionBarDrawerToggle(this, drawer, R.string.openToggle, R.string.closeToggle)
 
+
         drawer.addDrawerListener(toggle)
 
         toggle.syncState()

@@ -44,6 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_bottom_navigation"
             app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@color/amarillo"
             android:background="@drawable/bordes_redondos_bnv"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

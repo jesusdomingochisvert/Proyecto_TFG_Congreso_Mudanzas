@@ -36,7 +36,7 @@ class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEn
 
             with(binding) {
 
-                rvEatZonesNombreEvento.text = restaurante.nombre
+                rvEatZonesNombreEatZone.text = restaurante.nombre
 
             }
 

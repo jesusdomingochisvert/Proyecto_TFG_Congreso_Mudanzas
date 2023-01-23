@@ -45,10 +45,6 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
             with(binding) {
                 nombreUsuario.text=socio.asistente.nombreUsuario
                 empresa.text=socio.empresa.nombre
-
-                val mSpannableString = SpannableString(socio.empresa.nombre)
-                mSpannableString.setSpan(UnderlineSpan(), 0, mSpannableString.length, 0)
-                empresa.text = mSpannableString
                 cargoEmpresa.text=socio.cargo
 
             }
