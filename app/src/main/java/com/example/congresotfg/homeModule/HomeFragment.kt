@@ -2,30 +2,25 @@ package com.example.congresotfg.homeModule
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.SystemClock.sleep
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.common.entities.EventoEntity
-import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
-import com.example.congresotfg.homeModule.adapter.HomeEventoAdapter
+import com.example.congresotfg.homeModule.adapter.HomeEventoListAdapter
 import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
-import java.lang.Thread.sleep
-import java.sql.Time
 
 class HomeFragment : Fragment(), OnClickListener {
 
@@ -33,7 +28,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var fragmentContext: Context
 
-    private lateinit var homeEventoAdapter: HomeEventoAdapter
+    private lateinit var homeEventoListAdapter: HomeEventoListAdapter
     private lateinit var homeRestauranteAdapter: HomeRestauranteAdapter
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
@@ -75,7 +70,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         homeViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
 
-            homeEventoAdapter.setEvento(eventos)
+            homeEventoListAdapter.submitList(eventos)
 
         }
 
@@ -89,7 +84,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private fun setupRecyclerView() {
 
-        homeEventoAdapter = HomeEventoAdapter(mutableListOf(), this)
+        homeEventoListAdapter = HomeEventoListAdapter(this)
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
 
@@ -99,7 +94,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
             layoutManager = linearLayoutManager
 
-            adapter = homeEventoAdapter
+            adapter = homeEventoListAdapter
 
         }
 
@@ -135,7 +130,7 @@ class HomeFragment : Fragment(), OnClickListener {
         eventos.add(evento2)
         eventos.add(evento3)
 
-        homeEventoAdapter.setEvento(eventos)
+        homeEventoListAdapter.submitList(eventos)
 
     }
 
@@ -176,6 +171,11 @@ class HomeFragment : Fragment(), OnClickListener {
     override fun onClickEvento(eventoEntity: EventoEntity) {
 
         val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
+
+        val preferences = requireActivity().getSharedPreferences("evento", Context.MODE_PRIVATE)
+
+        preferences.edit().putString("id", eventoEntity.id.toString()).apply()
+
         startActivity(intent)
 
     }

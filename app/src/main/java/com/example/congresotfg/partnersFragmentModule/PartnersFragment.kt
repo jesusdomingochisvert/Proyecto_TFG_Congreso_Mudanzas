@@ -16,13 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.SocioEntity
-import com.example.congresotfg.databinding.FragmentHomeBinding
-import com.example.congresotfg.databinding.FragmentMyTicketBinding
 import com.example.congresotfg.databinding.FragmentPartnersBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
-import com.example.congresotfg.homeModule.adapter.HomeEventoAdapter
-import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
-import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.homeModule.viewModel.PartnersViewModel
 import com.example.congresotfg.partnersFragmentModule.adapter.PartnersAdapter
 

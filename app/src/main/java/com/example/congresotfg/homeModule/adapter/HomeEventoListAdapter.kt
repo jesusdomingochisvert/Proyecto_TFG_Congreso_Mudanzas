@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -12,7 +14,8 @@ import com.example.congresotfg.R
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.ItemRecentEventsBinding
 
-class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private var listener: OnClickListener): RecyclerView.Adapter<HomeEventoAdapter.ViewHolder>() {
+class HomeEventoListAdapter(private var listener: OnClickListener):
+    ListAdapter<EventoEntity, RecyclerView.ViewHolder>(EventoDiffCallback()) {
 
     private lateinit var fragmentContext: Context
 
@@ -26,11 +29,11 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val evento = eventos[position]
+        val evento = getItem(position)
 
-        with(holder) {
+        with(holder as ViewHolder) {
 
             setListener(evento)
 
@@ -39,25 +42,15 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
                 rvRecentEventsNombreEvento.text = evento.nombre
                 rvRecentEventsHoraInicio.text = evento.horaInicio
 
+                Glide.with(fragmentContext)
+                    .load(evento.imagen)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .into(binding.imgRecentEvents)
+
             }
 
-            Glide.with(fragmentContext)
-                .load(evento.imagen)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(binding.imgRecentEvents)
-
         }
-
-    }
-
-    override fun getItemCount(): Int = eventos.size
-
-    fun setEvento(eventos: MutableList<EventoEntity>) {
-
-        this.eventos = eventos
-
-        notifyDataSetChanged()
 
     }
 
@@ -76,6 +69,23 @@ class HomeEventoAdapter(private var eventos: MutableList<EventoEntity>, private 
             }
 
         }
+
+    }
+
+    class EventoDiffCallback: DiffUtil.ItemCallback<EventoEntity>() {
+
+        override fun areItemsTheSame(oldItem: EventoEntity, newItem: EventoEntity): Boolean {
+
+            return oldItem.id == newItem.id
+
+        }
+
+        override fun areContentsTheSame(oldItem: EventoEntity, newItem: EventoEntity): Boolean {
+
+            return oldItem == newItem
+
+        }
+
 
     }
 

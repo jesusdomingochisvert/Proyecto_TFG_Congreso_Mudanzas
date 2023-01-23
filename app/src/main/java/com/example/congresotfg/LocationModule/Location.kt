@@ -135,14 +135,29 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
     private fun setupRestaurantes() {
 
+        map.clear()
+
+        createMarker()
+
         val coordinates = LatLng(40.455062, -3.658961)
         val coordinates2 = LatLng(40.454439, -3.659287)
+        val coordinates3 = LatLng(40.453928, -3.657694)
+        val coordinates4 = LatLng(40.453433, -3.657464)
+        val coordinates5 = LatLng(40.451414, -3.655766)
 
         val marker = MarkerOptions().position(coordinates)
         val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
 
         map.addMarker(marker)
         map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
 
         map.setOnMarkerClickListener {
 
@@ -176,6 +191,42 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 }
 
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.453928, -3.657694))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.453433, -3.657464))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.451414, -3.655766))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
             }
 
             true
@@ -186,13 +237,553 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
     private fun setupAeropuerto() {
 
+        map.clear()
 
+        createMarker()
+
+        val coordinates = LatLng(40.498703, -3.567602)
+
+        val marker = MarkerOptions().position(coordinates)
+
+        map.addMarker(marker)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.498703, -3.567602))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
 
     }
 
     private fun setupHoteles() {
 
+        map.clear()
 
+        createMarker()
+
+        val coordinates = LatLng(40.459654, -3.663128)
+        val coordinates2 = LatLng(40.461518, -3.655844)
+        val coordinates3 = LatLng(40.459880, -3.648536)
+        val coordinates4 = LatLng(40.457184, -3.646727)
+        val coordinates5 = LatLng(40.456732, -3.647800)
+
+        val marker = MarkerOptions().position(coordinates)
+        val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
+
+        map.addMarker(marker)
+        map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.459654, -3.663128))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates2 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.461518, -3.655844))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.459880, -3.648536))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.457184, -3.646727))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.456732, -3.647800))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
+
+    }
+
+    private fun setupHospitales() {
+
+        map.clear()
+
+        createMarker()
+
+        val coordinates = LatLng(40.458034, -3.658426)
+        val coordinates2 = LatLng(40.455188, -3.657655)
+        val coordinates3 = LatLng(40.455171, -3.657678)
+        val coordinates4 = LatLng(40.455084, -3.657859)
+        val coordinates5 = LatLng(40.459938, -3.660753)
+
+        val marker = MarkerOptions().position(coordinates)
+        val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
+
+        map.addMarker(marker)
+        map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.458034, -3.658426))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates2 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.455188, -3.657655))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.455171, -3.657678))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.455084, -3.657859))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.459938, -3.660753))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
+
+    }
+
+    private fun setupFarmacias() {
+
+        map.clear()
+
+        createMarker()
+
+        val coordinates = LatLng(40.454176, -3.659825)
+        val coordinates2 = LatLng(40.459960, -3.659532)
+        val coordinates3 = LatLng(40.460911, -3.662260)
+        val coordinates4 = LatLng(40.451801, -3.656352)
+        val coordinates5 = LatLng(40.451804, -3.656343)
+
+        val marker = MarkerOptions().position(coordinates)
+        val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
+
+        map.addMarker(marker)
+        map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.454176, -3.659825))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates2 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.459960, -3.659532))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.460911, -3.662260))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.451801, -3.656352))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.451804, -3.656343))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
+
+    }
+
+    private fun setupGasolineras() {
+
+        map.clear()
+
+        createMarker()
+
+        val coordinates = LatLng(40.457454, -3.658100)
+        val coordinates2 = LatLng(40.458697, -3.667597)
+        val coordinates3 = LatLng(40.463280, -3.658131)
+        val coordinates4 = LatLng(40.446781, -3.651977)
+        val coordinates5 = LatLng(40.447611, -3.666193)
+
+        val marker = MarkerOptions().position(coordinates)
+        val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
+
+        map.addMarker(marker)
+        map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.457454, -3.658100))
+                        .add(LatLng(40.455062, -3.658961))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates2 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.458697, -3.667597))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.463280, -3.658131))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.446781, -3.651977))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.447611, -3.666193))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
+
+    }
+
+    private fun setupTransportesPublicos() {
+
+        map.clear()
+
+        createMarker()
+
+        val coordinates = LatLng(40.453698, -3.660445)
+        val coordinates2 = LatLng(40.453453, -3.660526)
+        val coordinates3 = LatLng(40.448593, -3.667439)
+        val coordinates4 = LatLng(40.457125, -3.647044)
+        val coordinates5 = LatLng(40.457814, -3.676979)
+
+        val marker = MarkerOptions().position(coordinates)
+        val marker2 = MarkerOptions().position(coordinates2)
+        val marker3 = MarkerOptions().position(coordinates3)
+        val marker4 = MarkerOptions().position(coordinates4)
+        val marker5 = MarkerOptions().position(coordinates5)
+
+        map.addMarker(marker)
+        map.addMarker(marker2)
+        map.addMarker(marker3)
+        map.addMarker(marker4)
+        map.addMarker(marker5)
+
+        map.animateCamera(CameraUpdateFactory.zoomOut(), 700, null)
+
+        map.setOnMarkerClickListener {
+
+            poly?.remove()
+
+            poly = null
+
+            when(it.position) {
+
+                coordinates -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.453698, -3.660445))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates2 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.453453, -3.660526))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates3 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.448593, -3.667439))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates4 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.457125, -3.647044))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+                coordinates5 -> {
+
+                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+
+                    val ruta = PolylineOptions()
+                        .add(LatLng(40.455982, -3.661534))
+                        .add(LatLng(40.457814, -3.676979))
+
+                    poly = map.addPolyline(ruta)
+
+                }
+
+            }
+
+            true
+
+        }
 
     }
 
@@ -352,12 +943,30 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupRestaurantes()
             }
-            1L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-            2L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-            3L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-            4L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-            5L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-            6L -> Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+            1L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupAeropuerto()
+            }
+            2L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupHoteles()
+            }
+            3L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupHospitales()
+            }
+            4L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupFarmacias()
+            }
+            5L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupGasolineras()
+            }
+            6L -> {
+                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
+                setupTransportesPublicos()
+            }
 
         }
 

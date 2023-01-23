@@ -10,6 +10,7 @@
         <item>Hospitales</item>
         <item>Farmacias</item>
         <item>Gasolineras</item>
+        <item>Transportes Públicos</item>
 
     </string-array>
     <string name="app_name">CongresoTFG</string>

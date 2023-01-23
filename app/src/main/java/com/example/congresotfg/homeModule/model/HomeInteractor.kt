@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.PatrocinadorEntity
@@ -13,9 +12,58 @@ import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 class HomeInteractor {
+
+    /*val eventos: LiveData<MutableList<EventoEntity>> = liveData {
+
+        val eventosLiveData = null
+
+        emitSource(eventosLiveData.map { eventos ->
+
+            eventos.sortedBy {
+
+                it.nombre
+
+            }.toMutableList()
+
+        })
+
+    }*/
+
+    private fun getRetrofit(): Retrofit {
+
+        val retrofit = Retrofit.Builder().baseUrl(Constants.CONGRESO_URL).addConverterFactory(GsonConverterFactory.create()).build()
+
+        return retrofit
+
+    }
+
+    fun getEvento(id: String, callback: (EventoResponse) -> Unit) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val call = getRetrofit().create(EventoService::class.java).getEvento(Constants.GET_EVENTO_PATH.replace("{id}", id))
+
+            val evento = call.body()
+
+            if (call.isSuccessful) {
+
+                Log.i("CALL", "OK")
+
+                callback(evento!!)
+
+            }
+
+        }
+
+    }
 
     fun getEventos(callback: (MutableList<EventoEntity>) -> Unit) {
 
