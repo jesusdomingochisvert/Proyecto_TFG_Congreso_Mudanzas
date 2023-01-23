@@ -1,8 +1,5 @@
 package com.example.congresotfg.common.entities
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
 data class EventoEntity(
 
     var id: Long = 0,

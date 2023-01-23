@@ -2,7 +2,6 @@ package com.example.congresotfg.homeModule.model
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.example.congresotfg.CongresoApplication

@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/advent_pro_medium</item>
+        <item>@font/averia_sans_libre_bold</item>
         <item>@font/barlow</item>
         <item>@font/livvic</item>
         <item>@font/livvic_thin</item>
