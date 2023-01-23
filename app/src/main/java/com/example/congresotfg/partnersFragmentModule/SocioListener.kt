@@ -7,8 +7,7 @@ import com.example.congresotfg.common.entities.SocioEntity
 
 interface SocioListener {
 
-    fun onClickSocio(socioEntity: SocioEntity)
+    fun onLongClickSocio(socioEntity: SocioEntity)
 
-    fun onClickEmpresa(empresaEntity: EmpresaEntity)
 
 }

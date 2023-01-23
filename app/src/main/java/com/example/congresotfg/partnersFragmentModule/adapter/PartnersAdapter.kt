@@ -76,10 +76,9 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
         fun setListener(socioEntity: SocioEntity) {
 
             with(binding) {
-
-                root.setOnClickListener {
-                    clEmpresa.setOnClickListener(){
-                        listener.onClickEmpresa(socioEntity.empresa)
+                root.setOnLongClickListener {
+                    listener.onLongClickSocio(socioEntity)
+                    true
                     }
                 }
 
@@ -89,4 +88,3 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
 
     }
 
-}

@@ -20,6 +20,7 @@ import com.example.congresotfg.databinding.FragmentPartnersBinding
 import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.viewModel.PartnersViewModel
 import com.example.congresotfg.partnersFragmentModule.adapter.PartnersAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class PartnersFragment : Fragment(),SocioListener {
 
@@ -89,23 +90,44 @@ class PartnersFragment : Fragment(),SocioListener {
 
     }
 
-    override fun onClickSocio(socioEntity: SocioEntity) {
-        val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
-
-        startActivity(intent)
-
+    override fun onLongClickSocio(socioEntity: SocioEntity) {
+        val items = arrayOf("Ir a la web de la empresa", "Contactar")
+        MaterialAlertDialogBuilder(requireActivity())
+            .setItems(items) { _, i ->
+                when (i) {
+                    1 -> abrirCorreo(socioEntity.asistente.correo)
+                    0 -> abrirWeb(socioEntity.empresa.enlace)
+                    
+                }
+            }
+            .show()
     }
 
-    override fun onClickEmpresa(empresaEntity: EmpresaEntity) {
-        val websiteIntent = Intent().apply {
-            action = Intent.ACTION_VIEW
-            data = Uri.parse(empresaEntity.enlace)
+    private fun abrirCorreo(correo: String) {
+
+            val intent = Intent(Intent.ACTION_SEND)
+
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(correo))
+
+            intent.setType("message/rfc822")
+
+            startActivity(Intent.createChooser(intent, "Elige un cliente de Correo:"))
+
         }
-        try{
+
+
+    private fun abrirWeb(enlace: String) {
+        if (enlace.isEmpty()) {
+            Toast.makeText(requireActivity(), R.string.main_error_no_website, Toast.LENGTH_LONG).show()
+        } else {
+            val websiteIntent = Intent().apply {
+                action = Intent.ACTION_VIEW
+                data = Uri.parse(enlace)
+            }
+
             startActivity(websiteIntent)
-        }catch (error: ActivityNotFoundException){
-            Toast.makeText(requireActivity(), R.string.main_error_website, Toast.LENGTH_LONG).show()
         }
     }
+
 
 }
