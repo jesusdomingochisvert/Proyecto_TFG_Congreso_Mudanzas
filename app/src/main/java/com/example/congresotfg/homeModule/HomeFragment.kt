@@ -2,6 +2,7 @@ package com.example.congresotfg.homeModule
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.SystemClock.sleep
 import android.util.Log
@@ -9,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.PatrocinadorEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
@@ -158,6 +161,7 @@ class HomeFragment : Fragment(), OnClickListener {
     private fun setupImagesCarousel() {
 
         val images = mutableListOf<CarouselItem>()
+        val lista = mutableListOf<EmpresaEntity>()
 
         val carousel = binding.imgCarouselPublicidad
 
@@ -165,9 +169,16 @@ class HomeFragment : Fragment(), OnClickListener {
             for (p in patrocinadores){
                 val imagen = CarouselItem(p.empresaCif.logo,p.empresaCif.nombre)
                 images.add(imagen)
+                lista.add(p.empresaCif)
 
             }
             carousel.addData(images)
+
+
+        }
+        carousel.setOnClickListener(){
+            Toast.makeText(requireActivity(),carousel.imageViewId.toString()
+                ,Toast.LENGTH_SHORT).show()
         }
 
 

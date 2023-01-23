@@ -38,7 +38,7 @@ class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var li
             with(bindingEvents) {
 
                 rvMyEventsNombreEvento.text = evento.nombre
-                rvMyEventsHoraInicio.text = evento.hora_inicio
+                rvMyEventsHoraInicio.text = evento.horaInicio
 
             }
 

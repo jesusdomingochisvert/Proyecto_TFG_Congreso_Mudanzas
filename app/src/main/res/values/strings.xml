@@ -92,4 +92,5 @@
     <string name="main_error_website">Enlace erróneo</string>
     <string name="openToggle">open</string>
     <string name="closeToggle">close</string>
+    <string name="text_nombre_eatzone">Nombre restaurante</string>
 </resources>
