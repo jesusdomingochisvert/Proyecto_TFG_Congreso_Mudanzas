@@ -8,9 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.congresotfg.R
 import com.example.congresotfg.databinding.ActivityEventoDialogBinding
+import com.example.congresotfg.eventoFragmentModule.viewModel.EventoFragmentViewModel
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -18,7 +21,7 @@ class EventoDialogActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventoDialogBinding
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var eventoDialogViewModel: EventoFragmentViewModel
 
     private var preferences: SharedPreferences? = null
 
@@ -27,29 +30,31 @@ class EventoDialogActivity : AppCompatActivity() {
         binding = ActivityEventoDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        eventoDialogViewModel = ViewModelProvider(this)[EventoFragmentViewModel::class.java]
 
-        preferences = getSharedPreferences("evento", MODE_PRIVATE)
-
-        binding.tituloEvento.setText("DREAMHACK VALENCIA")
         binding.lugarEvento.setText("ZONA SUPERIOR A")
+
         binding.btnBack.setOnClickListener(){
             onBackPressed()
         }
 
-        setupEvento()
+        setupViewModel()
 
     }
 
-    private fun setupEvento() {
+    private fun setupViewModel() {
 
-        val id = preferences?.getString("id", "")
+        val id = intent.extras?.getLong("id")
 
-        if (id != null) {
+        eventoDialogViewModel.getEvento(id!!)
 
-            homeViewModel.loadEvento(id)
+        eventoDialogViewModel.eventoInfo.observe(this, Observer { evento ->
 
-        }
+            binding.tituloEvento.text = evento.nombre
+
+            Glide.with(this).load(evento.imagen).into(binding.imgEvento)
+
+        })
 
     }
 

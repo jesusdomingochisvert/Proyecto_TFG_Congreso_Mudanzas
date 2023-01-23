@@ -172,9 +172,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
 
-        val preferences = requireActivity().getSharedPreferences("evento", Context.MODE_PRIVATE)
-
-        preferences.edit().putString("id", eventoEntity.id.toString()).apply()
+        intent.putExtra("id", eventoEntity.id)
 
         startActivity(intent)
 

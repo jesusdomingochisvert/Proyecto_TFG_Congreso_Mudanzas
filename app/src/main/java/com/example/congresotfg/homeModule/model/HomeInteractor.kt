@@ -37,34 +37,6 @@ class HomeInteractor {
 
     }*/
 
-    private fun getRetrofit(): Retrofit {
-
-        val retrofit = Retrofit.Builder().baseUrl(Constants.CONGRESO_URL).addConverterFactory(GsonConverterFactory.create()).build()
-
-        return retrofit
-
-    }
-
-    fun getEvento(id: String, callback: (EventoResponse) -> Unit) {
-
-        CoroutineScope(Dispatchers.IO).launch {
-
-            val call = getRetrofit().create(EventoService::class.java).getEvento(Constants.GET_EVENTO_PATH.replace("{id}", id))
-
-            val evento = call.body()
-
-            if (call.isSuccessful) {
-
-                Log.i("CALL", "OK")
-
-                callback(evento!!)
-
-            }
-
-        }
-
-    }
-
     fun getEventos(callback: (MutableList<EventoEntity>) -> Unit) {
 
         val url = Constants.CONGRESO_URL + Constants.GET_EVENTOS_PATH

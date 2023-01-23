@@ -1,11 +1,9 @@
-package com.example.congresotfg.homeModule.model
+package com.example.congresotfg.eventoFragmentModule.model
 
 import com.example.congresotfg.common.utils.Constants
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface EventoService {
 

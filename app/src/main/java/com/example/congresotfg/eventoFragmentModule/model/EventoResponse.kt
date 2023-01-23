@@ -1,4 +1,4 @@
-package com.example.congresotfg.homeModule.model
+package com.example.congresotfg.eventoFragmentModule.model
 
 import com.google.gson.annotations.SerializedName
 
