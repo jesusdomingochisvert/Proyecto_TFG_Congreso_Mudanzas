@@ -1,6 +1,7 @@
 package com.example.congresotfg.mainModule
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +17,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.congresotfg.LoginModule.LoginActivity
 import com.example.congresotfg.R
+import com.example.congresotfg.common.utils.Shortcut
 import com.example.congresotfg.databinding.MainActivityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -46,6 +48,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setContentView(binding.root)
 
+
+
         toolbar = binding.customToolbar.toolbarMain
         bottomNav = binding.bnv
         drawer = binding.drawerMain
@@ -74,6 +78,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         NavigationUI.setupWithNavController(navDrawer, navController)
 
         navDrawer.setNavigationItemSelectedListener(this)
+
+    }
+
+    private fun setupShortcuts() {
+
+        if (Build.VERSION.SDK_INT >= 25) {
+
+            Shortcut.setUp(this)
+
+        }
 
     }
 

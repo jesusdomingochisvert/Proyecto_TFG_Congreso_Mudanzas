@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
-import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
+import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.adapter.HomeEventoListAdapter
 import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
@@ -72,11 +73,15 @@ class HomeFragment : Fragment(), OnClickListener {
 
         homeViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
 
+            eventos.sort()
+
             homeEventoListAdapter.submitList(eventos)
 
         }
 
         homeViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
+
+            restaurantes.sort()
 
             homeRestauranteAdapter.setRestaurante(restaurantes)
 
@@ -89,8 +94,6 @@ class HomeFragment : Fragment(), OnClickListener {
         homeEventoListAdapter = HomeEventoListAdapter(this)
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
-
-        //getEventos()
 
         binding.rvRecentEvents.apply {
 
@@ -108,8 +111,6 @@ class HomeFragment : Fragment(), OnClickListener {
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
 
-        //getRestaurantes()
-
         binding.rvEatZones.apply {
 
             layoutManager = linearLayoutManager
@@ -117,38 +118,6 @@ class HomeFragment : Fragment(), OnClickListener {
             adapter = homeRestauranteAdapter
 
         }
-
-    }
-
-    private fun getEventos() {
-
-        val eventos = mutableListOf<EventoEntity>()
-
-        val evento = EventoEntity(1, 1, "Evento_1", "Descripción_1", "Lugar_1", "01:00", "02:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
-        val evento2 = EventoEntity(2, 1, "Evento_2", "Descripción_2", "Lugar_2", "02:00", "03:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
-        val evento3 = EventoEntity(3, 1, "Evento_3", "Descripción_3", "Lugar_3", "03:00", "04:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
-
-        eventos.add(evento)
-        eventos.add(evento2)
-        eventos.add(evento3)
-
-        homeEventoListAdapter.submitList(eventos)
-
-    }
-
-    private fun getRestaurantes() {
-
-        val restaurantes = mutableListOf<RestauranteEntity>()
-
-        val restaurante = RestauranteEntity(1, 1, "Restaurante_1", "Tipo_1", "Lugar_1", "Descripción_1", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
-        val restaurante2 = RestauranteEntity(2, 1, "Restaurante_2", "Tipo_2", "Lugar_2", "Descripción_2", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
-        val restaurante3 = RestauranteEntity(3, 1, "Restaurante_3", "Tipo_3", "Lugar_3", "Descripción_3", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
-
-        restaurantes.add(restaurante)
-        restaurantes.add(restaurante2)
-        restaurantes.add(restaurante3)
-
-        homeRestauranteAdapter.setRestaurante(restaurantes)
 
     }
 
