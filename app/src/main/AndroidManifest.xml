@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name=".eventoFragmentModule.EventoDialogActivity"
+            android:name=".eventoInfoModule.EventoDialogActivity"
             android:exported="false"
             android:theme="@style/NoTitleDialog">
             <meta-data

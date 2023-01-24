@@ -1,10 +1,10 @@
-package com.example.congresotfg.eventoFragmentModule.viewModel
+package com.example.congresotfg.eventoInfoModule.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.congresotfg.common.utils.Constants
-import com.example.congresotfg.eventoFragmentModule.model.EventoResponse
-import com.example.congresotfg.eventoFragmentModule.model.EventoService
+import com.example.congresotfg.eventoInfoModule.model.EventoResponse
+import com.example.congresotfg.eventoInfoModule.model.EventoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

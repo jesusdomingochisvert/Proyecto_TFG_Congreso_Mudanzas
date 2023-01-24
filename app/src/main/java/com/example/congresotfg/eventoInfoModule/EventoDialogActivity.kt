@@ -1,21 +1,13 @@
-package com.example.congresotfg.eventoFragmentModule
+package com.example.congresotfg.eventoInfoModule
 
-import android.app.Dialog
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.congresotfg.R
 import com.example.congresotfg.databinding.ActivityEventoDialogBinding
-import com.example.congresotfg.eventoFragmentModule.viewModel.EventoFragmentViewModel
-import com.example.congresotfg.homeModule.viewModel.HomeViewModel
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.example.congresotfg.eventoInfoModule.viewModel.EventoFragmentViewModel
 
 class EventoDialogActivity : AppCompatActivity() {
 

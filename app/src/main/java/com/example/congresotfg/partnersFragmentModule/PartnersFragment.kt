@@ -17,7 +17,7 @@ import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.SocioEntity
 import com.example.congresotfg.databinding.FragmentPartnersBinding
-import com.example.congresotfg.eventoFragmentModule.EventoDialogActivity
+import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.viewModel.PartnersViewModel
 import com.example.congresotfg.partnersFragmentModule.adapter.PartnersAdapter
 

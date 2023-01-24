@@ -1,4 +1,4 @@
-package com.example.congresotfg.eventoFragmentModule.model
+package com.example.congresotfg.eventoInfoModule.model
 
 import com.example.congresotfg.common.utils.Constants
 import retrofit2.Call
