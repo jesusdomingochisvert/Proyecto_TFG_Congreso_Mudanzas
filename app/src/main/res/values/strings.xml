@@ -100,4 +100,5 @@
     <string name="ts_txt2">En nuestra empresa tratamos de conseguir que los servicios sean lo más accesible y sencillos de utilizar posible para las empresas y usuarios.</string>
     <string name="ts_txt1">Somos una start-up de diseño multiplataforma con sede en Valencia. Diseñamos principalmente páginas web y aplicaciones android.</string>
     <string name="titulo_techstorm">TECHSTORM</string>
+    <string name="main_error_no_website">Error al cargar la página web</string>
 </resources>
