@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setContentView(binding.root)
 
-
+        setupShortcuts()
 
         toolbar = binding.customToolbar.toolbarMain
         bottomNav = binding.bnv
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navDrawer = binding.nvMain
 
         toggle = ActionBarDrawerToggle(this, drawer, R.string.openToggle, R.string.closeToggle)
-
 
         drawer.addDrawerListener(toggle)
 
@@ -85,7 +84,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         if (Build.VERSION.SDK_INT >= 25) {
 
-            Shortcut.setUp(this)
+            Shortcut.setUp(applicationContext)
 
         }
 
