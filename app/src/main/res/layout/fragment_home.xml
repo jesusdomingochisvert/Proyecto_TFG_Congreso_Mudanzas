@@ -46,8 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-
-            android:id="@+id/recent_events_show_all"
+            android:id="@+id/btn_allEvents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
