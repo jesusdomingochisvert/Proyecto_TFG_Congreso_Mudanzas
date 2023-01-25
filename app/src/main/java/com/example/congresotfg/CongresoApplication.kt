@@ -2,6 +2,7 @@ package com.example.congresotfg
 
 import android.app.Application
 import com.example.congresotfg.common.database.CongresoAPI
+import com.example.congresotfg.common.entities.AsistenteEntity
 
 class CongresoApplication : Application() {
 
@@ -10,7 +11,7 @@ class CongresoApplication : Application() {
         // Declaramos la variable de la API como variable global en todo el proyecto.
 
         lateinit var congresoAPI: CongresoAPI
-
+        lateinit var asistente : AsistenteEntity
     }
 
     override fun onCreate() {
