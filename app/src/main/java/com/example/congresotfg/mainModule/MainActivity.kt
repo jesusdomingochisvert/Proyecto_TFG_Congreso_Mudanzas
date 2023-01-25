@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -18,6 +19,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.congresotfg.LoginModule.LoginActivity
 import com.example.congresotfg.R
 import com.example.congresotfg.common.utils.Shortcut
+import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.databinding.MainActivityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -25,6 +27,8 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: MainActivityBinding
+
+    private lateinit var bindingHome: FragmentHomeBinding
 
     private lateinit var drawer: DrawerLayout
 
@@ -45,10 +49,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         binding = MainActivityBinding.inflate(layoutInflater)
+        bindingHome = FragmentHomeBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-
-
 
         toolbar = binding.customToolbar.toolbarMain
         bottomNav = binding.bnv
@@ -79,6 +82,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navDrawer.setNavigationItemSelectedListener(this)
 
+        val btnAllEvents = findViewById<TextView>(R.id.btn_allEvents)
+
+        btnAllEvents.setOnClickListener(){
+        navController.navigate(R.id.allEvents)
+        Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val btnAllEvents = findViewById<TextView>(R.id.btn_allEvents)
+        btnAllEvents.setOnClickListener(){
+            navController.navigate(R.id.allEvents)
+            Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupShortcuts() {
@@ -128,7 +147,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
 
                 else -> {}
-
             }
 
             true

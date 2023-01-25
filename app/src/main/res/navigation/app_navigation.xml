@@ -24,6 +24,12 @@
         tools:layout="@layout/fragment_like" />
 
     <fragment
+        android:id="@+id/allEvents"
+        android:name="com.example.congresotfg.allEventsModule.AllEventsFragment"
+        android:label="@string/text_allEvents"
+        tools:layout="@layout/fragment_all_events" />
+
+    <fragment
         android:id="@+id/contact"
         android:name="com.example.congresotfg.contactModule.ContactoFragment"
         android:label="@string/text_contact"

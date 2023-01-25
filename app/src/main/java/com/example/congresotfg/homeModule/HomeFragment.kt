@@ -2,9 +2,7 @@ package com.example.congresotfg.homeModule
 
 import android.content.Context
 import android.content.Intent
-
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +23,8 @@ import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 
+
+
 class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var binding: FragmentHomeBinding
@@ -36,6 +36,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
+
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +45,19 @@ class HomeFragment : Fragment(), OnClickListener {
 
         homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
+
     }
+
+    /*private fun launchAllEventsFragment(args:Bundle? = null) {
+        val fragment = AllEventsFragment()
+        if(args!=null) fragment.arguments = args
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.add(R.id.drawer_main,fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -52,7 +65,11 @@ class HomeFragment : Fragment(), OnClickListener {
 
         fragmentContext = this.requireActivity()
 
+
+
         return binding.root
+
+
 
     }
 
