@@ -1,5 +1,7 @@
 package com.example.congresotfg.common.entities
 
+import com.google.gson.annotations.SerializedName
+
 data class EventoEntity(
 
     var id: Long = 0,

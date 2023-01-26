@@ -53,11 +53,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setContentView(binding.root)
 
-<<<<<<< HEAD
         setupShortcuts()
 
-=======
->>>>>>> 9dce8a752701acb398d06040899916876511abf2
         toolbar = binding.customToolbar.toolbarMain
         bottomNav = binding.bnv
         drawer = binding.drawerMain

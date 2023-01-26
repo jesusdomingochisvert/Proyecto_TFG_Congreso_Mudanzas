@@ -1,7 +1,5 @@
 package com.example.congresotfg.homeModule.model
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.example.congresotfg.CongresoApplication
@@ -11,30 +9,8 @@ import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 class HomeInteractor {
-
-    /*val eventos: LiveData<MutableList<EventoEntity>> = liveData {
-
-        val eventosLiveData = null
-
-        emitSource(eventosLiveData.map { eventos ->
-
-            eventos.sortedBy {
-
-                it.nombre
-
-            }.toMutableList()
-
-        })
-
-    }*/
 
     fun getEventos(callback: (MutableList<EventoEntity>) -> Unit) {
 

@@ -14,15 +14,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
+import com.example.congresotfg.common.utils.Constants
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.adapter.HomeEventoListAdapter
-import com.example.congresotfg.homeModule.adapter.HomeRestauranteAdapter
+import com.example.congresotfg.homeModule.adapter.HomeRestauranteListAdapter
+import com.example.congresotfg.homeModule.model.EventosService
+import com.example.congresotfg.homeModule.model.RestauranteService
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
 import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
-
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class HomeFragment : Fragment(), OnClickListener {
@@ -32,7 +40,7 @@ class HomeFragment : Fragment(), OnClickListener {
     private lateinit var fragmentContext: Context
 
     private lateinit var homeEventoListAdapter: HomeEventoListAdapter
-    private lateinit var homeRestauranteAdapter: HomeRestauranteAdapter
+    private lateinit var homeRestauranteListAdapter: HomeRestauranteListAdapter
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
@@ -77,12 +85,71 @@ class HomeFragment : Fragment(), OnClickListener {
 
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
+        //setupViewModel()
+
+        showEventos()
+        showRestaurantes()
 
         setupRecyclerView()
         setupRecyclerView2()
 
         setupImagesCarousel()
+
+    }
+
+    private fun getRetrofit(): Retrofit {
+
+        return Retrofit.Builder().baseUrl(Constants.CONGRESO_URL).addConverterFactory(GsonConverterFactory.create()).build()
+
+    }
+
+    private fun showEventos() {
+
+        val service = getRetrofit().create(EventosService::class.java)
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val call = service.getEventos()
+
+            withContext(Dispatchers.Main) {
+
+                if (call.isSuccessful) {
+
+                    val eventos = call.body()
+
+                    eventos?.sorted()
+
+                    homeEventoListAdapter.submitList(eventos)
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private fun showRestaurantes() {
+
+        val service = getRetrofit().create(RestauranteService::class.java)
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val call = service.getRestaurantes()
+
+            withContext(Dispatchers.Main) {
+
+                if (call.isSuccessful) {
+
+                    val restaurantes = call.body()
+
+                    homeRestauranteListAdapter.submitList(restaurantes)
+
+                }
+
+            }
+
+        }
 
     }
 
@@ -100,7 +167,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
             restaurantes.sort()
 
-            homeRestauranteAdapter.setRestaurante(restaurantes)
+            homeRestauranteListAdapter.submitList(restaurantes)
 
         }
 
@@ -124,7 +191,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private fun setupRecyclerView2() {
 
-        homeRestauranteAdapter = HomeRestauranteAdapter(mutableListOf(), this)
+        homeRestauranteListAdapter = HomeRestauranteListAdapter(this)
 
         linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
 
@@ -132,7 +199,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
             layoutManager = linearLayoutManager
 
-            adapter = homeRestauranteAdapter
+            adapter = homeRestauranteListAdapter
 
         }
 

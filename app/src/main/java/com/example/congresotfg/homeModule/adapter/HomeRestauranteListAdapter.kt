@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -12,7 +14,8 @@ import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.ItemEatZonesBinding
 
-class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEntity>, private var listener: OnClickListener): RecyclerView.Adapter<HomeRestauranteAdapter.ViewHolder>() {
+class HomeRestauranteListAdapter(private var listener: OnClickListener):
+    ListAdapter<RestauranteEntity, RecyclerView.ViewHolder>(RestauranteDiffCallback()) {
 
     private lateinit var fragmentContext: Context
 
@@ -26,11 +29,11 @@ class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEn
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val restaurante = restaurantes.get(position)
+        val restaurante = getItem(position)
 
-        with(holder) {
+        with(holder as ViewHolder) {
 
             setListener(restaurante)
 
@@ -47,16 +50,6 @@ class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEn
                 .into(binding.imgEatZones)
 
         }
-
-    }
-
-    override fun getItemCount(): Int = restaurantes.size
-
-    fun setRestaurante(restaurantes: MutableList<RestauranteEntity>) {
-
-        this.restaurantes = restaurantes
-
-        notifyDataSetChanged()
 
     }
 
@@ -77,6 +70,22 @@ class HomeRestauranteAdapter(private var restaurantes: MutableList<RestauranteEn
             }
 
         }
+
+    }
+
+    class RestauranteDiffCallback: DiffUtil.ItemCallback<RestauranteEntity>() {
+        override fun areItemsTheSame(oldItem: RestauranteEntity, newItem: RestauranteEntity): Boolean {
+
+            return oldItem.id == newItem.id
+
+        }
+
+        override fun areContentsTheSame(oldItem: RestauranteEntity, newItem: RestauranteEntity): Boolean {
+
+            return oldItem == newItem
+
+        }
+
 
     }
 
