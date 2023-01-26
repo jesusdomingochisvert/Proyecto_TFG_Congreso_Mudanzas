@@ -16,4 +16,7 @@ object Constants {
 
     const val POST_LOGIN_PATH = "/logear"
 
+    const val SUCCESS_TEXT = "Successfull"
+    const val USERNAME_PARAM = "username"
+    const val PASSWORD_PARAM = "password"
 }

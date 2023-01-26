@@ -102,4 +102,6 @@
     <string name="titulo_techstorm">TECHSTORM</string>
     <string name="main_error_no_website">Error al cargar la página web</string>
     <string name="text_allEvents">All events</string>
+    <string name="main_error_response">Error en la respuesta</string>
+    <string name="main_error_server">Error en la llamada</string>
 </resources>
