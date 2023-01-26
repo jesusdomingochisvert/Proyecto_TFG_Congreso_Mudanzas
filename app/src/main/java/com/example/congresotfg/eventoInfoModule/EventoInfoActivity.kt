@@ -7,13 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.congresotfg.databinding.ActivityEventoDialogBinding
-import com.example.congresotfg.eventoInfoModule.viewModel.EventoFragmentViewModel
+import com.example.congresotfg.eventoInfoModule.viewModel.EventoInfoViewModel
 
-class EventoDialogActivity : AppCompatActivity() {
+class EventoInfoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEventoDialogBinding
 
-    private lateinit var eventoDialogViewModel: EventoFragmentViewModel
+    private lateinit var eventoDialogViewModel: EventoInfoViewModel
 
     private var preferences: SharedPreferences? = null
 
@@ -22,7 +22,7 @@ class EventoDialogActivity : AppCompatActivity() {
         binding = ActivityEventoDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        eventoDialogViewModel = ViewModelProvider(this)[EventoFragmentViewModel::class.java]
+        eventoDialogViewModel = ViewModelProvider(this)[EventoInfoViewModel::class.java]
 
         binding.lugarEvento.setText("ZONA SUPERIOR A")
 

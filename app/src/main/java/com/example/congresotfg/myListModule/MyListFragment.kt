@@ -16,7 +16,7 @@ import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentMyListBinding
-import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
+import com.example.congresotfg.eventoInfoModule.EventoInfoActivity
 import com.example.congresotfg.myListModule.adapter.MyListEventsAdapter
 import com.example.congresotfg.myListModule.adapter.MyListRestaurantsAdapter
 import com.example.congresotfg.myListModule.viewModel.MyListViewModel
@@ -182,7 +182,7 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     override fun onClickEvento(eventoEntity: EventoEntity) {
 
-        val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
+        val intent = Intent(fragmentContext, EventoInfoActivity::class.java)
 
         startActivity(intent)
 

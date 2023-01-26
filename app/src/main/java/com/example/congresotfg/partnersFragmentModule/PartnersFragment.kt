@@ -1,6 +1,5 @@
 package com.example.congresotfg.partnersFragmentModule
 
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -14,10 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.congresotfg.R
-import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.SocioEntity
 import com.example.congresotfg.databinding.FragmentPartnersBinding
-import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
 import com.example.congresotfg.homeModule.viewModel.PartnersViewModel
 import com.example.congresotfg.partnersFragmentModule.adapter.PartnersAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

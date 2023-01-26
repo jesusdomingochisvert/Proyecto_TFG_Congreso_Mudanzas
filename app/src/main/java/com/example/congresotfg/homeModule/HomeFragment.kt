@@ -17,7 +17,7 @@ import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.Constants
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
-import com.example.congresotfg.eventoInfoModule.EventoDialogActivity
+import com.example.congresotfg.eventoInfoModule.EventoInfoActivity
 import com.example.congresotfg.homeModule.adapter.HomeEventoListAdapter
 import com.example.congresotfg.homeModule.adapter.HomeRestauranteListAdapter
 import com.example.congresotfg.homeModule.model.EventosService
@@ -43,7 +43,6 @@ class HomeFragment : Fragment(), OnClickListener {
     private lateinit var homeRestauranteListAdapter: HomeRestauranteListAdapter
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
-
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -73,11 +72,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
         fragmentContext = this.requireActivity()
 
-
-
         return binding.root
-
-
 
     }
 
@@ -233,7 +228,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     override fun onClickEvento(eventoEntity: EventoEntity) {
 
-        val intent = Intent(fragmentContext, EventoDialogActivity::class.java)
+        val intent = Intent(fragmentContext, EventoInfoActivity::class.java)
 
         intent.putExtra("id", eventoEntity.id)
 
