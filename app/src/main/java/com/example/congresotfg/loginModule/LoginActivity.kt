@@ -5,22 +5,18 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.lifecycleScope
-import com.example.congresotfg.LoginModule.model.AsistenteInfo
-import com.example.congresotfg.LoginModule.model.LoginService
+import com.example.congresotfg.CongresoApplication
+import com.example.congresotfg.LoginModule.model.*
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.AsistenteEntity
 import com.example.congresotfg.common.utils.Constants
 import com.example.congresotfg.databinding.ActivityLoginBinding
 import com.example.congresotfg.mainModule.MainActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import org.json.JSONObject
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -28,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,9 +44,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-                login()
-        }
 
+                login()
+
+        }
 
     }
 
@@ -60,51 +56,34 @@ class LoginActivity : AppCompatActivity() {
         val username = binding.etUsername.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(Constants.CONGRESO_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        val retrofit = Retrofit.Builder().baseUrl(Constants.CONGRESO_URL).addConverterFactory(GsonConverterFactory.create()).build()
 
         val service = retrofit.create(LoginService::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
+
             try {
-                val result = service.loginAsistente(AsistenteInfo(username,password))
-                Log.i("hola",result.body().toString())
-                if(result.toString() != "null"){
-                    entrar()
+
+                val call = service.loginAsistente(username, password)
+
+                withContext(Dispatchers.Main) {
+
+                    CongresoApplication.asistente = call
+
+                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+
+                    Toast.makeText(this@LoginActivity, CongresoApplication.asistente.nombreUsuario, Toast.LENGTH_SHORT).show()
+
                 }
 
-            } catch(e: Exception) {
-                (e as? HttpException)?.let {
-                    when(it.code()) {
-                        400 -> { error(getString(R.string.main_error_server)) }
-                        else -> error(getString(R.string.main_error_response))
-                    }
-                }
+            } catch (e: Exception) {
+
+                    Log.i("RESPONSE", "${e.printStackTrace()}")
 
             }
+
         }
+
     }
-
-    private fun entrar() {
-        startActivity(Intent(this, MainActivity::class.java))
-    }
-
-    private fun error(result: String) {
-        Toast.makeText(this,result,Toast.LENGTH_SHORT).show()
-    }
-
-
-
-
-    //private fun bienvenida() {Toast.makeText(this,"Bienvenido/a",Toast.LENGTH_SHORT).show()}
-
-
-
-
-
-
-
 
 }
