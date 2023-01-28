@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.CongresoApplication
+import com.example.congresotfg.common.entities.ActividadEntity
 import com.example.congresotfg.common.entities.EmpresaEntity
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
@@ -18,8 +20,10 @@ import com.example.congresotfg.common.utils.Constants
 import com.example.congresotfg.common.utils.OnClickListener
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.eventoInfoModule.EventoInfoActivity
+import com.example.congresotfg.homeModule.adapter.HomeActividadListAdapter
 import com.example.congresotfg.homeModule.adapter.HomeEventoListAdapter
 import com.example.congresotfg.homeModule.adapter.HomeRestauranteListAdapter
+import com.example.congresotfg.homeModule.model.ActividadesService
 import com.example.congresotfg.homeModule.model.EventosService
 import com.example.congresotfg.homeModule.model.RestauranteService
 import com.example.congresotfg.homeModule.viewModel.HomeViewModel
@@ -41,6 +45,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
     private lateinit var homeEventoListAdapter: HomeEventoListAdapter
     private lateinit var homeRestauranteListAdapter: HomeRestauranteListAdapter
+    private lateinit var homeActividadListAdapter: HomeActividadListAdapter
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
@@ -83,6 +88,7 @@ class HomeFragment : Fragment(), OnClickListener {
         //setupViewModel()
 
         showEventos()
+
         showRestaurantes()
 
         setupRecyclerView()
@@ -98,6 +104,30 @@ class HomeFragment : Fragment(), OnClickListener {
 
     }
 
+    private fun showActividades() {
+
+        val service = getRetrofit().create(ActividadesService::class.java)
+
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val call = service.getActividades()
+
+            withContext(Dispatchers.Main) {
+
+                if (call.isSuccessful && call.body() != null) {
+
+                    val actividades = call.body()
+
+                    homeActividadListAdapter.submitList(actividades)
+
+                }
+
+            }
+
+        }
+
+    }
+
     private fun showEventos() {
 
         val service = getRetrofit().create(EventosService::class.java)
@@ -108,11 +138,9 @@ class HomeFragment : Fragment(), OnClickListener {
 
             withContext(Dispatchers.Main) {
 
-                if (call.isSuccessful) {
+                if (call.isSuccessful && call.body() != null) {
 
                     val eventos = call.body()
-
-                    eventos?.sorted()
 
                     homeEventoListAdapter.submitList(eventos)
 
@@ -134,7 +162,7 @@ class HomeFragment : Fragment(), OnClickListener {
 
             withContext(Dispatchers.Main) {
 
-                if (call.isSuccessful) {
+                if (call.isSuccessful && call.body() != null) {
 
                     val restaurantes = call.body()
 
@@ -143,26 +171,6 @@ class HomeFragment : Fragment(), OnClickListener {
                 }
 
             }
-
-        }
-
-    }
-
-    private fun setupViewModel() {
-
-        homeViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
-
-            eventos.sort()
-
-            homeEventoListAdapter.submitList(eventos)
-
-        }
-
-        homeViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
-
-            restaurantes.sort()
-
-            homeRestauranteListAdapter.submitList(restaurantes)
 
         }
 
@@ -181,6 +189,36 @@ class HomeFragment : Fragment(), OnClickListener {
             adapter = homeEventoListAdapter
 
         }
+
+        /*if (CongresoApplication.socio.id == CongresoApplication.asistente.id) {
+
+            homeEventoListAdapter = HomeEventoListAdapter(this)
+
+            linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
+
+            binding.rvRecentEvents.apply {
+
+                layoutManager = linearLayoutManager
+
+                adapter = homeEventoListAdapter
+
+            }
+
+        } else {
+
+            homeActividadListAdapter = HomeActividadListAdapter(this)
+
+            linearLayoutManager = LinearLayoutManager(fragmentContext, LinearLayoutManager.HORIZONTAL, false)
+
+            binding.rvRecentEvents.apply {
+
+                layoutManager = linearLayoutManager
+
+                adapter = homeActividadListAdapter
+
+            }
+
+        }*/
 
     }
 
@@ -231,6 +269,16 @@ class HomeFragment : Fragment(), OnClickListener {
         val intent = Intent(fragmentContext, EventoInfoActivity::class.java)
 
         intent.putExtra("id", eventoEntity.id)
+
+        startActivity(intent)
+
+    }
+
+    override fun onClickActividad(actividadEntity: ActividadEntity) {
+
+        val intent = Intent(fragmentContext, EventoInfoActivity::class.java)
+
+        intent.putExtra("id", actividadEntity.id)
 
         startActivity(intent)
 

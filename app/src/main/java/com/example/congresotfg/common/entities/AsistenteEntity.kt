@@ -4,7 +4,7 @@ data class AsistenteEntity(
 
     var id: Long = 0,
     var nombre: String,
-    var apellidos: String,
+    var apellido: String,
     var nombreUsuario : String = "",
     var contrasenya: String = "",
     var codigoPostal : String = "",
@@ -16,7 +16,7 @@ data class AsistenteEntity(
 
 ) {
 
-    constructor() : this(nombre = "", apellidos = "")
+    constructor() : this(nombre = "", apellido = "")
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

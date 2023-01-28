@@ -1,7 +1,5 @@
 package com.example.congresotfg.common.entities
 
-import com.google.gson.annotations.SerializedName
-
 data class EventoEntity(
 
     var id: Long = 0,
@@ -12,7 +10,6 @@ data class EventoEntity(
     var horaInicio: String,
     var horaFin: String = "",
     var imagen: String,
-    var clicks: Int = 0
 
 ): Comparable<EventoEntity> {
 

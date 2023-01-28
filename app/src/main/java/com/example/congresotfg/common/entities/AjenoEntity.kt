@@ -1,19 +1,18 @@
 package com.example.congresotfg.common.entities
 
-data class SocioEntity(
-    var id: Long = 0,
-    var cargo:String = "",
-    var asistente : AsistenteEntity,
-    var empresa : EmpresaEntity = EmpresaEntity(),
+data class AjenoEntity(
 
-){
-    constructor() : this(asistente = AsistenteEntity())
+    var id: Long = 0,
+    var asistente: AsistenteEntity,
+    var actividades: List<ActividadEntity>
+
+) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as SocioEntity
+        other as AjenoEntity
 
         if (id != other.id) return false
 
@@ -23,8 +22,4 @@ data class SocioEntity(
     override fun hashCode(): Int {
         return id.hashCode()
     }
-
-
 }
-
-

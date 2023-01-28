@@ -12,6 +12,7 @@ import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.LoginModule.model.*
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.AsistenteEntity
+import com.example.congresotfg.common.entities.SocioEntity
 import com.example.congresotfg.common.utils.Constants
 import com.example.congresotfg.databinding.ActivityLoginBinding
 import com.example.congresotfg.mainModule.MainActivity
@@ -69,6 +70,8 @@ class LoginActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main) {
 
                     CongresoApplication.asistente = call
+
+                    CongresoApplication.socio = SocioEntity(asistente = CongresoApplication.asistente)
 
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
 

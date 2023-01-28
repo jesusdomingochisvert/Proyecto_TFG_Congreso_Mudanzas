@@ -7,6 +7,9 @@ object Constants {
     const val GET_EVENTOS_PATH = "/eventos"
     const val GET_EVENTO_PATH = "/evento/{id}"
 
+    const val GET_ACTIVIDADES_PATH = "/actividades"
+    const val GET_ACTIVIDAD_PATH = "/actividad/{id}"
+
     const val GET_RESTAURANTES_PATH = "/puestosComida"
     const val GET_ASISTENTE_PATH = "/asistente/{id}"
 
@@ -16,7 +19,6 @@ object Constants {
 
     const val POST_LOGIN_PATH = "/logear"
 
-    const val SUCCESS_TEXT = "Successfull"
-    const val USERNAME_PARAM = "username"
-    const val PASSWORD_PARAM = "password"
+    const val GET_ENTRADA_PATH = "/asistente/{id_asistente}/entrada"
+
 }

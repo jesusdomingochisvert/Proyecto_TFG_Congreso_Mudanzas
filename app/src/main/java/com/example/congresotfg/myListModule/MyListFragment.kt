@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.common.entities.ActividadEntity
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
 import com.example.congresotfg.common.utils.OnClickListener
@@ -186,6 +187,10 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
         startActivity(intent)
 
+    }
+
+    override fun onClickActividad(actividadEntity: ActividadEntity) {
+        TODO("Not yet implemented")
     }
 
     override fun onClickRestaurante(restauranteEntity: RestauranteEntity) {

@@ -1,50 +1,30 @@
 package com.example.congresotfg.myTicketModule
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.congresotfg.common.entities.AsistenteEntity
-import com.example.congresotfg.databinding.FragmentAboutBinding
+import com.example.congresotfg.CongresoApplication
+import com.example.congresotfg.common.entities.EntradaEntity
 import com.example.congresotfg.databinding.FragmentMyTicketBinding
-import com.example.congresotfg.myTicketModule.model.MyTicketInteractor
-import com.example.congresotfg.myTicketModule.viewModel.MyTicketViewModel
-import com.google.gson.Gson
+import com.example.congresotfg.myTicketModule.model.EntradaResponse
+import com.example.congresotfg.myTicketModule.viewModel.EntradaViewModel
 
 class MyTicketFragment : Fragment() {
 
     private lateinit var binding: FragmentMyTicketBinding
 
-    private lateinit var myTicketViewModel: MyTicketViewModel
-
-    private var asistente: AsistenteEntity? = null
+    private lateinit var entradaViewModel: EntradaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-        myTicketViewModel = ViewModelProvider(requireActivity())[MyTicketViewModel::class.java]
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val preferences = requireActivity().getSharedPreferences("global", Context.MODE_PRIVATE)
-
-        val gson = Gson()
-
-        val json = preferences.getString("asistente", "")
-
-        asistente = gson.fromJson(json, AsistenteEntity::class.java)
-
-        myTicketViewModel.setAsistente(asistente!!)
+        entradaViewModel = ViewModelProvider(this)[EntradaViewModel::class.java]
 
     }
 
@@ -66,22 +46,26 @@ class MyTicketFragment : Fragment() {
 
     private fun setupViewModel() {
 
-        myTicketViewModel.getAsistente().observe(viewLifecycleOwner) {
+        val id_asistente = CongresoApplication.asistente.id
 
-            setUITicket(it)
+        entradaViewModel.getEntrada(id_asistente)
 
-        }
+        entradaViewModel.entradaInfo.observe(viewLifecycleOwner, Observer { entrada ->
+
+            setUITicket(entrada)
+
+        })
+
+    }
+
+    private fun setUITicket(entrada: EntradaResponse) {
+
+        binding.tietNombreAsistente.text = CongresoApplication.asistente.nombre.editable()
+        binding.tietApellidoAsistente.text = CongresoApplication.asistente.apellido.editable()
+        binding.tietFechaTicketAsistente.text = entrada.fecha.editable()
 
     }
 
     private fun String.editable(): Editable = Editable.Factory.getInstance().newEditable(this)
-
-    private fun setUITicket(asistenteEntity: AsistenteEntity) {
-
-        binding.tietNombreAsistente.text = asistenteEntity.nombre.editable()
-        binding.tietApellidoAsistente.text = asistenteEntity.apellidos.editable()
-
-
-    }
 
 }

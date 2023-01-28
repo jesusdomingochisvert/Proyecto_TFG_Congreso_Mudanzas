@@ -15,7 +15,5 @@ interface LoginService {
     @POST(value=Constants.POST_LOGIN_PATH)
     suspend fun loginAsistente(@Field("username") username: String, @Field("password") password: String): AsistenteEntity
 
-
-
 }
 
