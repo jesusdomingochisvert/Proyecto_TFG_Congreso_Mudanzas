@@ -21,10 +21,10 @@
                 android:icon="@drawable/ic_login"/>
 
             <item
-
-                android:id="@+id/menu_dark_mode"
-                android:title="@string/txt_modo_oscuro"
-                android:icon="@drawable/ic_mode_dark"/>
+                android:id="@+id/menu_profile"
+                android:title="@string/txt_profile"
+                android:iconTint="@color/rojo"
+                android:icon="@drawable/ic_baseline_person_outline_24"/>
 
         </menu>
 

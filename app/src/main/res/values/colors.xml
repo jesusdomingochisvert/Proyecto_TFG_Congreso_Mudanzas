@@ -10,11 +10,11 @@
     <color name="yellow_app">#DBC500</color>
     <color name="gris_claro">#D9D9D9</color>
 
-    <color name="amarillo">#FFF176</color>
-    <color name="azul">#26418f</color>
-    <color name="azuldegradado">#5571C1</color>
+
+    <color name="rojo">#7f0000</color>
+    <color name="rojodegradado">#FFA9A9</color>
     <color name="helperTextColor">#DA0F00</color>
 
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#26418f</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#7f0000</color>
 
 </resources>

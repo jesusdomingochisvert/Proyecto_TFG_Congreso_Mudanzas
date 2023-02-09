@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="chipStrokeColor">@color/azul</item>
-        <item name="boxStrokeColor">@color/amarillo</item>
+        <item name="chipStrokeColor">@color/rojo</item>
+        <item name="boxStrokeColor">@color/rojo</item>
         <item name="boxStrokeWidth">2dp</item>
-        <item name="color">@color/amarillo</item>
-        <item name="android:textColorHint">@color/azul</item>
+        <item name="color">@color/rojo</item>
+        <item name="android:textColorHint">@color/rojo</item>
         <item name="cornerRadius">30dp</item>
         <item name="boxCornerRadiusBottomEnd">15dp</item>
         <item name="boxCornerRadiusBottomStart">15dp</item>

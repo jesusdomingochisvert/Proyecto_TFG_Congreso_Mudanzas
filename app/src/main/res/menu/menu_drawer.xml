@@ -5,7 +5,6 @@
 
         android:id="@+id/drawer_contact"
         android:title="@string/text_contact"
-
         />
 
     <item
@@ -26,6 +25,12 @@
 
         android:id="@+id/drawer_friends"
         android:title="@string/text_partners"
+        />
+
+    <item
+
+        android:id="@+id/drawer_allEvents"
+        android:title="@string/text_allEvents"
 
         />
 

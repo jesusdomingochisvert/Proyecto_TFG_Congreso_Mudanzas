@@ -6,20 +6,4 @@ data class AjenoEntity(
     var asistente: AsistenteEntity,
     var actividades: List<ActividadEntity>
 
-) {
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as AjenoEntity
-
-        if (id != other.id) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        return id.hashCode()
-    }
-}
+)

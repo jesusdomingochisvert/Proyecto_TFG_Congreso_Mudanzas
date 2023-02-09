@@ -19,7 +19,6 @@
             android:padding="32dp">
 
             <SearchView
-
                 android:id="@+id/sv_busqueda_my_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

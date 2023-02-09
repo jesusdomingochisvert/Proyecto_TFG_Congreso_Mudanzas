@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.congresotfg.databinding.FragmentAboutBinding
-import com.example.congresotfg.databinding.FragmentContactoBinding
 
 class AboutFragment : Fragment() {
 

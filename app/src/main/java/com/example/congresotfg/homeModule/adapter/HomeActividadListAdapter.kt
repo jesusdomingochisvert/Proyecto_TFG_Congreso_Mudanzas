@@ -12,10 +12,13 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.ActividadEntity
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.utils.ImageClass
+import com.example.congresotfg.common.utils.listeners.ActividadListener
+import com.example.congresotfg.databinding.ItemActividadesBinding
+
 import com.example.congresotfg.databinding.ItemRecentEventsBinding
 
-class HomeActividadListAdapter(private var listener: OnClickListener):
+class HomeActividadListAdapter(private var listener: ActividadListener):
     ListAdapter<ActividadEntity, RecyclerView.ViewHolder>(ActividadDiffCallback()) {
 
     private lateinit var fragmentContext: Context
@@ -24,7 +27,7 @@ class HomeActividadListAdapter(private var listener: OnClickListener):
 
         fragmentContext = parent.context
 
-        val view = LayoutInflater.from(fragmentContext).inflate(R.layout.item_recent_events, parent, false)
+        val view = LayoutInflater.from(fragmentContext).inflate(R.layout.item_actividades, parent, false)
 
         return ViewHolder(view)
 
@@ -40,14 +43,10 @@ class HomeActividadListAdapter(private var listener: OnClickListener):
 
             with(binding) {
 
-                rvRecentEventsNombreEvento.text = activivdad.nombre
-                rvRecentEventsHoraInicio.text = activivdad.horaInicio
+                nombreActividad.text = activivdad.nombre
+                horaActividad.text = activivdad.horaInicio
 
-                Glide.with(fragmentContext)
-                    .load(activivdad.imagen)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .into(binding.imgRecentEvents)
+                ImageClass().loadImage(activivdad.imagen,imgActividad,fragmentContext)
 
             }
 
@@ -57,7 +56,7 @@ class HomeActividadListAdapter(private var listener: OnClickListener):
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        val binding = ItemRecentEventsBinding.bind(view)
+        val binding = ItemActividadesBinding.bind(view)
 
         fun setListener(actividadEntity: ActividadEntity) {
 

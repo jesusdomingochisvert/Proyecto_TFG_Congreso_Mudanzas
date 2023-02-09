@@ -3,6 +3,7 @@ package com.example.congresotfg.homeModule.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,10 +12,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.R
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.retrofit.metodos.EventoMethods
+import com.example.congresotfg.common.utils.CorrutinaClass
+import com.example.congresotfg.common.utils.ImageClass
+import com.example.congresotfg.common.utils.listeners.EventoListener
 import com.example.congresotfg.databinding.ItemRecentEventsBinding
 
-class HomeEventoListAdapter(private var listener: OnClickListener):
+class HomeEventoListAdapter(private var listener: EventoListener):
     ListAdapter<EventoEntity, RecyclerView.ViewHolder>(EventoDiffCallback()) {
 
     private lateinit var fragmentContext: Context
@@ -37,22 +41,22 @@ class HomeEventoListAdapter(private var listener: OnClickListener):
 
             setListener(evento)
 
-            with(binding) {
+            CorrutinaClass().executeAction(fragmentContext) {
+                val valoracion = EventoMethods().getValoracionMedia(evento.id)
 
-                rvRecentEventsNombreEvento.text = evento.nombre
-                rvRecentEventsHoraInicio.text = evento.horaInicio
-
-                Glide.with(fragmentContext)
-                    .load(evento.imagen)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
-                    .into(binding.imgRecentEvents)
-
+                with(binding) {
+                    valoraciontxt.text = valoracion
+                    rvRecentEventsNombreEvento.text = evento.nombre.toUpperCase()
+                    rvRecentEventsHoraInicio.text = evento.horaInicio.toUpperCase()
+                    ImageClass().loadImage(evento.imagen,binding.imgRecentEvents,fragmentContext)
+                    cveventoinfo.visibility=VISIBLE
+                }
             }
 
         }
 
     }
+
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/common_margin_default"
+    app:cardCornerRadius="@dimen/common_margin_default"
+    tools:context=".profileModule.adapter.EditProfileDialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dimension20dp">
+
+        <TextView
+
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/text_edit_profile"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_edit_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_profile"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextColor="@color/rojodegradado"
+            app:helperTextEnabled="false"
+            app:helperTextTextColor="@color/helperTextColor"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_baseline_person_outline_24"
+            app:endIconTint="@color/rojo"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_edit_username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPersonName"
+                android:hint="@string/hintusername"
+                android:textSize="14sp"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/til_edit_contrasenya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toBottomOf="@id/til_edit_usuario"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextColor="@color/rojodegradado"
+            app:helperTextEnabled="false"
+            app:helperTextTextColor="@color/helperTextColor"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/rojo">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tiet_edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:hint="@string/hintpassword"
+                android:textSize="14dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:id="@+id/til_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toBottomOf="@id/til_edit_contrasenya"
+            style="@style/TextInputLayoutStyle"
+            app:hintTextColor="@color/rojodegradado"
+            app:helperTextEnabled="false"
+            app:helperTextTextColor="@color/helperTextColor">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/tiet_edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hintemail"
+                android:textSize="14dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/btn_cancel_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toBottomOf="@id/til_edit_email"
+            app:layout_constraintStart_toStartOf="@id/til_edit_email"
+            app:layout_constraintEnd_toStartOf="@id/btn_edit"
+            android:text="@string/text_cancel_edit"
+            android:backgroundTint="@color/rojo"
+            app:cornerRadius="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin_default"
+            app:layout_constraintTop_toBottomOf="@id/til_edit_email"
+            app:layout_constraintEnd_toEndOf="@id/til_edit_email"
+            app:layout_constraintStart_toEndOf="@id/btn_cancel_edit"
+            android:text="@string/text_edit"
+            android:backgroundTint="@color/rojo"
+            app:cornerRadius="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

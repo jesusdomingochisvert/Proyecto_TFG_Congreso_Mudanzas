@@ -1,169 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/containerDialog"
     android:layout_width="match_parent"
-    android:layout_height="550dp"
-    android:orientation="vertical"
-    app:cardCornerRadius="@dimen/dimension30dp"
-    >
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="550dp">
-
-    <ImageView
-
-        android:id="@+id/img_evento"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        style="@style/DialogCorners"
-        android:src="@drawable/evento2"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-    </ImageView>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
-
+        android:layout_height="@dimen/cv_dialog_dimension"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/dimension30dp">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:layout_height="@dimen/cv_dialog_dimension">
+
+
+        <ImageView
+            android:id="@+id/img_evento"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/img_dialog_dimension"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            style="@style/DialogCorners"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/dimension20dp"
+                android:backgroundTint="#94FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/containerDialogEvento">
+
+                <RatingBar
+                    android:id="@+id/rBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:stepSize="0.5"
+                    android:secondaryProgressTintMode="multiply"
+                    android:progressBackgroundTint="@color/white"
+                    android:progressTint="@color/rojo"
+                    android:outlineProvider="bounds"
+                    android:secondaryProgressTint="@color/rojo"
+                    android:numStars="5"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerDialogEvento"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/dialog_redondo"
-            >
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/dialog_redondo">
+            <TextView
+                android:id="@+id/titulo_evento"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dimension10dp"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="NOMBRE DEL EVENTO">
+            </TextView>
+            <TextView
+                android:id="@+id/hora"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/text_size_16"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titulo_evento"
+                tools:text="HORARIO">
+            </TextView>
+            <TextView
+                android:id="@+id/lugar_evento"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="120dp"
+                android:paddingBottom="@dimen/dimension10dp"
+                android:layout_marginStart="@dimen/dimension10dp"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintTop_toBottomOf="@id/titulo_evento"
+                tools:text="LUGAR">
+            </TextView>
+            <TextView
+                android:id="@+id/descripcion_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Descripcion"
+                android:layout_marginStart="@dimen/dimension10dp"
+                app:autoSizeTextType="uniform"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
+                app:layout_constraintTop_toBottomOf="@id/lugar_evento">
+            </TextView>
+            <LinearLayout
+                android:id="@+id/layout_recyclers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimension10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/descripcion_txt">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/rojo"
+                    app:cardCornerRadius="@dimen/dimension20dp"
+                    app:strokeWidth="1dp"
+                    android:layout_marginEnd="7dp"
+                    app:strokeColor="@color/rojodegradado">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+                        <TextView
+                            android:id="@+id/ponentes_titulo"
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="@dimen/dimension100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_ponentes"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16"
+                            app:autoSizeTextType="uniform"
+                            />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginTop="5dp"
+                            android:id="@+id/ponentes_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/rojo"
+                    app:cardCornerRadius="@dimen/radius20"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/rojodegradado">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp">
+                        <TextView
+                            android:id="@+id/asistentes_titulo"
+                            style="@style/TextAppearance.MaterialComponents.Headline5"
+                            android:layout_width="@dimen/dimension100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_asistentes"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_16"
+                            app:autoSizeTextType="uniform"
+                            />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/asistentes_recycler"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_valorado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_valorado"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/layout_recyclers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginBottom="@dimen/dimension10dp"
+                android:layout_marginTop="@dimen/dimension20dp">
 
-                    <TextView
-                        android:id="@+id/titulo_evento"
-                        style="@style/TextAppearance.MaterialComponents.Headline6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/dimension10dp"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="NOMBRE DEL EVENTO">
+            </TextView>
 
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/hora_evento"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:textSize="16sp"
-                        android:textColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/titulo_evento"
-                        tools:text="HORARIO">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/lugar_evento"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="120dp"
-                        android:paddingBottom="@dimen/dimension10dp"
-                        android:textColor="@color/black"
-                        android:textAlignment="textStart"
-                        android:textSize="16sp"
-                        app:layout_constraintTop_toBottomOf="@id/titulo_evento"
-                        tools:text="LUGAR">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/ponentes_titulo"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_ponentes"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/lugar_evento">
-
-                    </TextView>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/ponentes_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="@id/ponentes_titulo"
-                        app:layout_constraintTop_toBottomOf="@id/ponentes_titulo">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <TextView
-                        android:id="@+id/asistentes_titulo"
-                        style="@style/TextAppearance.MaterialComponents.Headline5"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/txt_asistentes"
-                        android:layout_marginTop="10dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:autoSizeTextType="uniform"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ponentes_recycler">
-
-                    </TextView>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/asistentes_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="@id/asistentes_titulo"
-                        app:layout_constraintTop_toBottomOf="@id/asistentes_titulo">
-
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:text="Asistir"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:backgroundTint="@color/azul"
-                        app:strokeColor="@color/amarillo"
-                        app:strokeWidth="1dp"
-                        >
-
-                    </com.google.android.material.button.MaterialButton>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@null"
-            android:src="@drawable/ic_back">
-
-        </ImageButton>
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_asistir"
+                android:layout_width="@dimen/dimension100dp"
+                android:layout_height="@dimen/dimension60dp"
+                android:layout_marginBottom="@dimen/dimension10dp"
+                android:layout_marginTop="@dimen/dimension20dp"
+                android:text="@string/btn_asistir_txt"
+                app:cornerRadius="@dimen/radius15"
+                app:layout_constraintTop_toBottomOf="@id/layout_recyclers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/rojo"
+                app:strokeColor="@color/white"
+                app:strokeWidth="1dp"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="@dimen/dimension70dp"
+                android:layout_height="@dimen/dimension70dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="visible">
+            </ProgressBar>
+            <ImageButton
+                android:id="@+id/btnBack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="@dimen/dimension50dp"
+                android:layout_height="@dimen/dimension50dp"
+                android:background="@null"
+                android:src="@drawable/ic_back">
+            </ImageButton>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.core.widget.NestedScrollView>

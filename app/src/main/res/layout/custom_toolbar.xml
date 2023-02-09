@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:menu="@menu/menu_toolbar"
-        android:background="@color/azul">
+        android:background="@color/rojo">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -1,6 +1,7 @@
-package com.example.congresotfg.LocationModule
+package com.example.congresotfg.locationModule
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
@@ -13,11 +14,11 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.congresotfg.mainModule.MainActivity
 import com.example.congresotfg.R
-import com.example.congresotfg.common.utils.LocationApiService
+import com.example.congresotfg.common.utils.location.LocationApiService
 import com.example.congresotfg.common.utils.RouteResponse
 import com.example.congresotfg.databinding.FragmentLocationBinding
+import com.example.congresotfg.mainModule.MainActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener
@@ -169,8 +170,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.455062, -3.658961))
@@ -180,8 +179,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -193,8 +190,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.453928, -3.657694))
@@ -205,8 +200,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.453433, -3.657464))
@@ -216,8 +209,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -258,8 +249,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
             when(it.position) {
 
                 coordinates -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -313,8 +302,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.459654, -3.663128))
@@ -324,8 +311,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -337,8 +322,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.459880, -3.648536))
@@ -349,8 +332,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.457184, -3.646727))
@@ -360,8 +341,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -415,8 +394,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.458034, -3.658426))
@@ -426,8 +403,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -439,8 +414,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.455171, -3.657678))
@@ -451,8 +424,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.455084, -3.657859))
@@ -462,8 +433,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -517,8 +486,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.454176, -3.659825))
@@ -528,8 +495,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -541,8 +506,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.460911, -3.662260))
@@ -553,8 +516,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.451801, -3.656352))
@@ -564,8 +525,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -619,8 +578,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.457454, -3.658100))
                         .add(LatLng(40.455062, -3.658961))
@@ -630,8 +587,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -643,8 +598,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.463280, -3.658131))
@@ -655,8 +608,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.446781, -3.651977))
@@ -666,8 +617,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -721,8 +670,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.453698, -3.660445))
@@ -732,8 +679,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates2 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -745,8 +690,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates3 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.448593, -3.667439))
@@ -757,8 +700,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
                 coordinates4 -> {
 
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
-
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
                         .add(LatLng(40.457125, -3.647044))
@@ -768,8 +709,6 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
                 }
 
                 coordinates5 -> {
-
-                    Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
 
                     val ruta = PolylineOptions()
                         .add(LatLng(40.455982, -3.661534))
@@ -802,6 +741,7 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
     // Devuelve True si el Permiso de Localización está activado comparandolo y False si no esta activado.
     private fun isLocationPermissionGranted() = ContextCompat.checkSelfPermission(fragmentContext, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
 
+    @SuppressLint("MissingPermission")
     private fun enabledLocation() {
 
         if(!::map.isInitialized) return
@@ -837,6 +777,7 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
 
         when(requestCode) {
@@ -857,6 +798,7 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
 
     }
 
+    @SuppressLint("MissingPermission")
     override fun onResume() {
 
         super.onResume()
@@ -940,31 +882,24 @@ class Location : Fragment(), OnMapReadyCallback, OnMyLocationButtonClickListener
         when(item) {
 
             0L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupRestaurantes()
             }
             1L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupAeropuerto()
             }
             2L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupHoteles()
             }
             3L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupHospitales()
             }
             4L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupFarmacias()
             }
             5L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupGasolineras()
             }
             6L -> {
-                Toast.makeText(fragmentContext, "OK", Toast.LENGTH_SHORT).show()
                 setupTransportesPublicos()
             }
 

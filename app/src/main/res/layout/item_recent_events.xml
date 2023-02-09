@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="170dp"
+    android:id="@+id/cveventoinfo"
+    android:visibility="gone"
     android:layout_margin="16dp"
     app:cardCornerRadius="20dp"
     android:elevation="20dp"
@@ -16,11 +18,12 @@
         android:id="@+id/img_recent_events"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_bright"/>
+        android:scaleType="centerCrop"
+        />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:id="@+id/container_evento"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingEnd="5dp"
@@ -35,6 +38,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:background="#9F606060"
             android:backgroundTint="#9F606060"
             >
 
@@ -42,7 +46,6 @@
                 android:id="@+id/rv_recent_events_nombre_evento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/averia_sans_libre_bold"
                 android:text="@string/text_nombre_evento"
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
@@ -56,9 +59,10 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             android:layout_margin="2dp"
+            android:background="#9F606060"
             android:backgroundTint="#9F606060"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,10 +74,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:fontFamily="@font/averia_sans_libre_bold"
                 android:text="@string/text_hora_inicio"
                 android:layout_margin="5dp"
                 android:textColor="@color/white"
+                android:textAlignment="center"
+                android:textSize="14sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="2dp"
+            android:background="#9F606060"
+            android:backgroundTint="#9F606060"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/valoraciontxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_margin="5dp"
+                android:textColor="#9CFFA0"
+                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 

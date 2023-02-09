@@ -10,10 +10,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.EventoEntity
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.utils.listeners.EventoListener
 import com.example.congresotfg.databinding.ItemMyEventsBinding
 
-class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var listener: OnClickListener) : RecyclerView.Adapter<MyListEventsAdapter.ViewHolder>() {
+class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var listener: EventoListener) : RecyclerView.Adapter<MyListEventsAdapter.ViewHolder>() {
 
     private lateinit var fragmentContext: Context
 
@@ -29,7 +29,7 @@ class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var li
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val evento = eventos.get(position)
+        val evento = eventos[position]
 
         with(holder) {
 
@@ -37,8 +37,8 @@ class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var li
 
             with(bindingEvents) {
 
-                rvMyEventsNombreEvento.text = evento.nombre
-                rvMyEventsHoraInicio.text = evento.horaInicio
+                nombreEvento.text = evento.nombre
+                horaInicio.text = evento.horaInicio
 
             }
 
@@ -46,7 +46,7 @@ class MyListEventsAdapter(var eventos: MutableList<EventoEntity>, private var li
                 .load(evento.imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
-                .into(bindingEvents.imgMyEvents)
+                .into(bindingEvents.img)
 
         }
 

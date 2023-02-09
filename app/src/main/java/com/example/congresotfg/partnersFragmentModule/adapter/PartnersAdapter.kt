@@ -1,26 +1,19 @@
 package com.example.congresotfg.partnersFragmentModule.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.text.SpannableString
-import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.SocioEntity
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.utils.ImageClass
 import com.example.congresotfg.databinding.ItemAsistente1Binding
-import com.example.congresotfg.databinding.ItemRecentEventsBinding
-import com.example.congresotfg.partnersFragmentModule.SocioListener
+import com.example.congresotfg.common.utils.listeners.SocioListener
 
-class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var listener: SocioListener): RecyclerView.Adapter<PartnersAdapter.ViewHolder>() {
+class PartnersAdapter(private var listener: SocioListener): ListAdapter<SocioEntity,RecyclerView.ViewHolder>(PartnerDiffCallback()) {
 
     private lateinit var fragmentContext: Context
 
@@ -34,40 +27,26 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
 
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val socio = socios[position]
+        val socio = getItem(position)
 
-        with(holder) {
+        with(holder as ViewHolder) {
 
             setListener(socio)
 
             with(binding) {
-                nombreUsuario.text=socio.asistente.nombreUsuario
-                empresa.text=socio.empresa.nombre
-                cargoEmpresa.text=socio.cargo
+
+                nombreUsuario.text = socio.asistente.nombreUsuario
+                empresa.text = socio.empresa.nombre
+                cargoEmpresa.text = socio.cargo
+
+                ImageClass().loadImage(socio.asistente.imagen,imagenAsistente,fragmentContext)
 
             }
-
-            Glide.with(fragmentContext)
-                .load(socio.asistente.imagen)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(binding.imagenAsistente)
-
         }
-
     }
 
-    override fun getItemCount(): Int = socios.size
-
-    fun setSocio(socios: MutableList<SocioEntity>) {
-
-        this.socios = socios
-
-        notifyDataSetChanged()
-
-    }
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
@@ -76,10 +55,13 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
         fun setListener(socioEntity: SocioEntity) {
 
             with(binding) {
-                root.setOnLongClickListener {
-                    listener.onLongClickSocio(socioEntity)
+
+                itemasistente.setOnLongClickListener {
+
+                    listener.onClickSocio(socioEntity)
+
                     true
-                    }
+
                 }
 
             }
@@ -87,4 +69,18 @@ class PartnersAdapter(private var socios: MutableList<SocioEntity>, private var 
         }
 
     }
+
+    class PartnerDiffCallback:DiffUtil.ItemCallback<SocioEntity>() {
+
+        override fun areItemsTheSame(oldItem: SocioEntity, newItem: SocioEntity): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: SocioEntity, newItem: SocioEntity): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+
+}
 

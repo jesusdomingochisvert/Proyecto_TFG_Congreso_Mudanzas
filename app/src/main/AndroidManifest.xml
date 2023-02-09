@@ -14,11 +14,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CongresoTFG"
+        android:theme="@style/Theme.CongresoTFGLogin"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".allEventsModule.AllEventsFragment"
+            android:name=".profileModule.adapter.EditProfileDialog"
+            android:exported="false"
+            android:theme="@style/NoTitleDialog">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".chatModule.ChatActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -36,13 +44,13 @@
             android:name=".mainModule.MainActivity"
             android:exported="false"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            android:theme="@style/Theme.CongresoTFG">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".restauranteDialogModule.RestauranteDialogActivity"
+            android:name=".restauranteInfoModule.RestauranteInfoActivity"
             android:exported="false"
             android:theme="@style/NoTitleDialog">
             <meta-data

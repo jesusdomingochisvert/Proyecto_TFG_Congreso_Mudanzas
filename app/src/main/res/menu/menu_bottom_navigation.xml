@@ -8,7 +8,7 @@
     <item
         android:id="@+id/menu_location"
         android:title="@string/menu_location"
-        android:iconTint="@color/amarillo"
+        android:iconTint="@color/white"
         android:icon="@drawable/cambiar_icono_location"/>
 
     <item
@@ -21,7 +21,7 @@
 
         android:id="@+id/menu_like"
         android:title="@string/menu_like"
-        android:iconTint="@color/amarillo"
+        android:iconTint="@color/white"
         android:icon="@drawable/cambiar_icono_like"/>
 
 </menu>

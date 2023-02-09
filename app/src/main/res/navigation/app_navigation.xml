@@ -12,16 +12,10 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/location"
-        android:name="com.example.congresotfg.LocationModule.Location"
+        android:name="com.example.congresotfg.locationModule.Location"
         android:label="@string/text_location"
         tools:layout="@layout/fragment_location" >
     </fragment>
-
-    <fragment
-        android:id="@+id/like"
-        android:name="com.example.congresotfg.likeModule.Like"
-        android:label="@string/text_like"
-        tools:layout="@layout/fragment_like" />
 
     <fragment
         android:id="@+id/allEvents"
@@ -46,13 +40,7 @@
         android:name="com.example.congresotfg.myTicketModule.MyTicketFragment"
         android:label="@string/text_my_tickets"
         tools:layout="@layout/fragment_my_ticket" />
-    <!--
-    <fragment
-        android:id="@+id/friends"
-        android:name="com.example.congresotfg.likeModule.Like"
-        android:label="@string/text_like"
-        tools:layout="@layout/fragment_like" />
-    -->
+
     <fragment
         android:id="@+id/my_events"
         android:name="com.example.congresotfg.myListModule.MyListFragment"
@@ -64,5 +52,11 @@
         android:name="com.example.congresotfg.partnersFragmentModule.PartnersFragment"
         android:label="@string/text_partners"
         tools:layout="@layout/fragment_partners" />
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.congresotfg.profileModule.ProfileFragment"
+        android:label="@string/text_profile"
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>

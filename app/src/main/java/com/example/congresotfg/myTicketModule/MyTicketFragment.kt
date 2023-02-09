@@ -6,27 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.EntradaEntity
+import com.example.congresotfg.common.retrofit.metodos.EntradaMethods
 import com.example.congresotfg.databinding.FragmentMyTicketBinding
-import com.example.congresotfg.myTicketModule.model.EntradaResponse
-import com.example.congresotfg.myTicketModule.viewModel.EntradaViewModel
+import com.example.congresotfg.common.utils.CorrutinaClass
 
 class MyTicketFragment : Fragment() {
 
     private lateinit var binding: FragmentMyTicketBinding
-
-    private lateinit var entradaViewModel: EntradaViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-
-        entradaViewModel = ViewModelProvider(this)[EntradaViewModel::class.java]
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -40,29 +28,29 @@ class MyTicketFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
+        getEntrada()
 
     }
 
-    private fun setupViewModel() {
+    private fun getEntrada() {
 
         val id_asistente = CongresoApplication.asistente.id
 
-        entradaViewModel.getEntrada(id_asistente)
+        CorrutinaClass().executeAction(requireActivity()) {
 
-        entradaViewModel.entradaInfo.observe(viewLifecycleOwner, Observer { entrada ->
+            val entrada = EntradaMethods().getEntrada(id_asistente)
 
             setUITicket(entrada)
 
-        })
+        }
 
     }
 
-    private fun setUITicket(entrada: EntradaResponse) {
+    private fun setUITicket(entrada: EntradaEntity) {
 
         binding.tietNombreAsistente.text = CongresoApplication.asistente.nombre.editable()
         binding.tietApellidoAsistente.text = CongresoApplication.asistente.apellido.editable()
-        binding.tietFechaTicketAsistente.text = entrada.fecha.editable()
+        binding.tietFechaTicketAsistente.text = entrada.fechaCompra.editable()
 
     }
 

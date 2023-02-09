@@ -2,15 +2,29 @@
     <!-- Base application theme. -->
     <style name="Theme.CongresoTFG" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#26418F</item>
-        <item name="colorPrimaryVariant">#26418F</item>
-        <item name="colorOnPrimary">#26418F</item>
+        <item name="colorPrimary">@color/rojo</item>
+        <item name="colorPrimaryVariant">@color/rojo</item>
+        <item name="colorOnPrimary">@color/rojo</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#26418F</item>
+        <item name="colorSecondary">@color/rojo</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/azul</item>
+        <item name="android:statusBarColor">@color/rojo</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.CongresoTFGLogin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/rojo</item>
+        <item name="colorPrimaryVariant">@color/rojo</item>
+        <item name="colorOnPrimary">@color/rojo</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/rojo</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/rojodegradado</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

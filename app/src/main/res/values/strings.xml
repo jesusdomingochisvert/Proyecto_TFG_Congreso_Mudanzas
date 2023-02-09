@@ -104,4 +104,23 @@
     <string name="text_allEvents">All events</string>
     <string name="main_error_response">Error en la respuesta</string>
     <string name="main_error_server">Error en la llamada</string>
+    <string name="btn_asistir_txt">ASIST</string>
+    <string name="btn_reservar_txt">RESERVE</string>
+    <string name="txt_escribe">Escribe...</string>
+    <string name="txtSendMsg">Mi mensaje</string>
+    <string name="text_delete_for_everyone">Delete for Everyone</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_delete_for_me">Delete for Me</string>
+    <string name="text_name_profile_chat">Nombre Perfil Chat</string>
+    <string name="text_status_profile_chat">Status</string>
+    <string name="txtReceiveMsg">Su mensaje</string>
+    <string name="txt_profile">Profile</string>
+    <string name="text_profile">Profile</string>
+    <string name="txt_available_bonuses">Available bonuses:</string>
+    <string name="txt_valorado">YOU HAVE ALREADY VALUED IT</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="hintemail">Email</string>
+    <string name="text_cancel_edit">Cancel</string>
+    <string name="text_edit">Edit</string>
+    <string name="txt_reservado">You have already booked it</string>
 </resources>

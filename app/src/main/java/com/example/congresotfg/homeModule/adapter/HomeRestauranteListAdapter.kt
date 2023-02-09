@@ -11,10 +11,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.RestauranteEntity
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.utils.ImageClass
+import com.example.congresotfg.common.utils.listeners.RestauranteListener
 import com.example.congresotfg.databinding.ItemEatZonesBinding
 
-class HomeRestauranteListAdapter(private var listener: OnClickListener):
+class HomeRestauranteListAdapter(private var listener: RestauranteListener):
     ListAdapter<RestauranteEntity, RecyclerView.ViewHolder>(RestauranteDiffCallback()) {
 
     private lateinit var fragmentContext: Context
@@ -39,15 +40,11 @@ class HomeRestauranteListAdapter(private var listener: OnClickListener):
 
             with(binding) {
 
-                rvEatZonesNombreEatZone.text = restaurante.nombre
+                rvEatZonesNombreEatZone.text = restaurante.nombre.toUpperCase()
+
+                ImageClass().loadImage(restaurante.imagen, imgEatZones, fragmentContext)
 
             }
-
-            Glide.with(fragmentContext)
-                .load(restaurante.imagen)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(binding.imgEatZones)
 
         }
 

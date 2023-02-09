@@ -22,7 +22,6 @@
             layout="@layout/custom_toolbar" />
 
         <fragment
-
             android:id="@+id/frame_main"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
@@ -44,8 +43,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_bottom_navigation"
             app:labelVisibilityMode="unlabeled"
-            app:itemIconTint="@color/amarillo"
-            android:background="@drawable/bordes_redondos_bnv"/>
+            app:itemIconTint="@color/white"
+            android:background="@color/rojo"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,6 +56,19 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/custom_nav"
         app:menu="@menu/menu_drawer"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logotechstorm"
+            android:layout_gravity="bottom">
+
+        </ImageView>
+
+    </com.google.android.material.navigation.NavigationView>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

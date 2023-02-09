@@ -8,4 +8,14 @@
     <dimen name="dimension40dp">40dp</dimen>
     <dimen name="medidas_btn_back">40dp</dimen>
     <dimen name="dimension30dp">30dp</dimen>
+    <dimen name="dimension50dp">50dp</dimen>
+    <dimen name="dimension70dp">70dp</dimen>
+    <dimen name="dimension100dp">100dp</dimen>
+    <dimen name="dimension60dp">60dp</dimen>
+    <dimen name="radius15">15dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="radius20">20dp</dimen>
+    <dimen name="img_dialog_dimension">300dp</dimen>
+    <dimen name="cv_dialog_dimension">600dp</dimen>
+    <dimen name="common_margin_default">16dp</dimen>
 </resources>

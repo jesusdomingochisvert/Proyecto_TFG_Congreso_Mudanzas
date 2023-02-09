@@ -6,6 +6,7 @@
     android:layout_height="150dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="16dp"
+    app:cardCornerRadius="20dp"
     android:backgroundTint="@android:color/holo_blue_bright">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +30,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:padding="2dp"
-            android:backgroundTint="#9EFFFFFF"
+            android:background="#9F606060"
+            android:backgroundTint="#9F606060"
             >
         <TextView
 
@@ -37,8 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
+            android:textColor="@color/white"
             style="@style/TextAppearance.MaterialComponents.Headline6"
-            android:fontFamily="@font/averia_sans_libre_bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -2,7 +2,9 @@ package com.example.congresotfg.myListModule
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,18 +14,23 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.common.entities.ActividadEntity
 import com.example.congresotfg.common.entities.EventoEntity
 import com.example.congresotfg.common.entities.RestauranteEntity
-import com.example.congresotfg.common.utils.OnClickListener
+import com.example.congresotfg.common.retrofit.metodos.EventoMethods
+import com.example.congresotfg.common.retrofit.metodos.RestauranteMethods
+import com.example.congresotfg.common.utils.CorrutinaClass
+import com.example.congresotfg.common.utils.listeners.EventoListener
+import com.example.congresotfg.common.utils.listeners.RestauranteListener
 import com.example.congresotfg.databinding.FragmentMyListBinding
 import com.example.congresotfg.eventoInfoModule.EventoInfoActivity
 import com.example.congresotfg.myListModule.adapter.MyListEventsAdapter
 import com.example.congresotfg.myListModule.adapter.MyListRestaurantsAdapter
-import com.example.congresotfg.myListModule.viewModel.MyListViewModel
-import com.example.congresotfg.restauranteDialogModule.RestauranteDialogActivity
+import com.example.congresotfg.restauranteInfoModule.RestauranteInfoActivity
+import java.util.EnumSet.range
 
-class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListener {
+class MyListFragment : Fragment(), EventoListener, RestauranteListener, SearchView.OnQueryTextListener {
 
     private lateinit var binding: FragmentMyListBinding
 
@@ -36,16 +43,6 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
     private lateinit var linearLayoutManagerRestaurants: RecyclerView.LayoutManager
 
     private lateinit var search: SearchView
-
-    private lateinit var myListViewModel: MyListViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-        super.onCreate(savedInstanceState)
-
-        myListViewModel = ViewModelProvider(requireActivity())[MyListViewModel::class.java]
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -65,7 +62,9 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
         super.onViewCreated(view, savedInstanceState)
 
+        myListEventsAdapter = MyListEventsAdapter(mutableListOf(),this)
 
+        myListRestaurantsAdapter = MyListRestaurantsAdapter(mutableListOf(),this)
 
     }
 
@@ -81,13 +80,9 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
         binding.btnEventos.setOnClickListener {
 
-            myListEventsAdapter = MyListEventsAdapter(mutableListOf(),this)
-
             linearLayoutManagerEvents = LinearLayoutManager(fragmentContext)
 
-            //getEventos()
-
-            setupEventosViewModel()
+            showEventos()
 
             binding.rvMyEvents.apply {
 
@@ -97,25 +92,25 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
                 binding.rvMyRestaurants.visibility = View.GONE
 
+                visibility = View.VISIBLE
+
             }
 
         }
 
         binding.btnRestaurantes.setOnClickListener {
 
-            myListRestaurantsAdapter = MyListRestaurantsAdapter(mutableListOf(),this)
-
             linearLayoutManagerRestaurants = LinearLayoutManager(fragmentContext)
 
-            //getRestaurantes()
-
-            setupRestaurantesViewModel()
+            showRestaurantes()
 
             binding.rvMyRestaurants.apply {
 
                 layoutManager = linearLayoutManagerRestaurants
 
                 adapter = myListRestaurantsAdapter
+
+                binding.rvMyEvents.visibility = View.GONE
 
                 visibility = View.VISIBLE
 
@@ -125,9 +120,13 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     }
 
-    private fun setupEventosViewModel() {
+    private fun showEventos() {
 
-        myListViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
+        CorrutinaClass().executeAction(fragmentContext) {
+
+            val eventos = EventoMethods().getAsistenteEventos()
+
+            CongresoApplication.eventosLike = eventos
 
             myListEventsAdapter.setEvento(eventos)
 
@@ -135,49 +134,43 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     }
 
-    private fun setupRestaurantesViewModel() {
+    private fun showRestaurantes() {
 
-        myListViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
+        CorrutinaClass().executeAction(fragmentContext) {
 
-            myListRestaurantsAdapter.setRestaurante(restaurantes)
+            val restaurantes = RestauranteMethods().getRestaurantes()
+
+            rellenarMyList(restaurantes)
+
+            myListRestaurantsAdapter.setRestaurante(CongresoApplication.restauranteLike)
 
         }
 
     }
 
-    private fun getEventos() : MutableList<EventoEntity> {
+    private fun rellenarMyList(restaurantes: MutableList<RestauranteEntity>?) {
 
-        val eventos = mutableListOf<EventoEntity>()
+        val lista = mutableListOf<RestauranteEntity>()
 
-        val evento = EventoEntity(1, 1, "Evento_1", "Descripción_1", "Lugar_1", "01:00", "02:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
-        val evento2 = EventoEntity(2, 1, "Evento_2", "Descripción_2", "Lugar_2", "02:00", "03:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
-        val evento3 = EventoEntity(3, 1, "Evento_3", "Descripción_3", "Lugar_3", "03:00", "04:00", "https://grandluxorhotels.com/wp-content/uploads/2016/09/9323706488_7c288a9659_b.jpg")
+        for (b in CongresoApplication.bonos) {
 
-        eventos.add(evento)
-        eventos.add(evento2)
-        eventos.add(evento3)
+            lista.add(b.puestoComida)
 
-        myListEventsAdapter.setEvento(eventos)
+        }
 
-        return eventos
+        for (r in restaurantes!!) {
 
-    }
+            if (!lista.contains(r)) {
 
-    private fun getRestaurantes() : MutableList<RestauranteEntity> {
+                if (!CongresoApplication.restauranteLike.contains(r)) {
 
-        val restaurantes = mutableListOf<RestauranteEntity>()
+                    CongresoApplication.restauranteLike.add(r)
 
-        val restaurante = RestauranteEntity(1, 1, "Restaurante_1", "Tipo_1", "Lugar_1", "Descripción_1", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
-        val restaurante2 = RestauranteEntity(2, 1, "Restaurante_2", "Tipo_2", "Lugar_2", "Descripción_2", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
-        val restaurante3 = RestauranteEntity(3, 1, "Restaurante_3", "Tipo_3", "Lugar_3", "Descripción_3", "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2019/06/25/15614775255199.jpg")
+                }
 
-        restaurantes.add(restaurante)
-        restaurantes.add(restaurante2)
-        restaurantes.add(restaurante3)
+            }
 
-        myListRestaurantsAdapter.setRestaurante(restaurantes)
-
-        return restaurantes
+        }
 
     }
 
@@ -185,17 +178,17 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
         val intent = Intent(fragmentContext, EventoInfoActivity::class.java)
 
+        intent.putExtra("id_evento", eventoEntity.id)
+
         startActivity(intent)
 
     }
 
-    override fun onClickActividad(actividadEntity: ActividadEntity) {
-        TODO("Not yet implemented")
-    }
-
     override fun onClickRestaurante(restauranteEntity: RestauranteEntity) {
 
-        val intent = Intent(fragmentContext, RestauranteDialogActivity::class.java)
+        val intent = Intent(fragmentContext, RestauranteInfoActivity::class.java)
+
+        intent.putExtra("id_restaurante", restauranteEntity.id)
 
         startActivity(intent)
 
@@ -217,57 +210,33 @@ class MyListFragment : Fragment(), OnClickListener, SearchView.OnQueryTextListen
 
     private fun filterList(newText: String) {
 
-        myListViewModel.getEventos().observe(viewLifecycleOwner) { eventos ->
+        val filteredListEventos = mutableListOf<EventoEntity>()
 
-            val filteredListEventos = mutableListOf<EventoEntity>()
+        for (e in CongresoApplication.eventosLike) {
 
-            for (e in eventos) {
+            if (e.nombre.lowercase().contains(newText.lowercase())) {
 
-                if (e.nombre.lowercase().contains(newText.lowercase())) {
-
-                    filteredListEventos.add(e)
-
-                }
-
-            }
-
-            if (filteredListEventos.isEmpty()) {
-
-                Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
-
-            } else {
-
-                myListEventsAdapter.setFilteredList(filteredListEventos)
+                filteredListEventos.add(e)
 
             }
 
         }
 
-        myListViewModel.getRestaurantes().observe(viewLifecycleOwner) { restaurantes ->
+        myListEventsAdapter.setFilteredList(filteredListEventos)
 
-            val filteredListRestaurantes = mutableListOf<RestauranteEntity>()
+        val filteredListRestaurantes = mutableListOf<RestauranteEntity>()
 
-            for (r in restaurantes) {
+        for (r in CongresoApplication.restauranteLike) {
 
-                if (r.nombre.lowercase().contains(newText.lowercase())) {
+            if (r.nombre.lowercase().contains(newText.lowercase())) {
 
-                    filteredListRestaurantes.add(r)
-
-                }
-
-            }
-
-            if (filteredListRestaurantes.isEmpty()) {
-
-                Toast.makeText(fragmentContext, "No data found", Toast.LENGTH_SHORT).show()
-
-            } else {
-
-                myListRestaurantsAdapter.setFilteredList(filteredListRestaurantes)
+                filteredListRestaurantes.add(r)
 
             }
 
         }
+
+        myListRestaurantsAdapter.setFilteredList(filteredListRestaurantes)
 
     }
 

@@ -1,9 +1,11 @@
 package com.example.congresotfg.mainModule
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -16,19 +18,19 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.LoginModule.LoginActivity
 import com.example.congresotfg.R
 import com.example.congresotfg.common.utils.Shortcut
 import com.example.congresotfg.databinding.FragmentHomeBinding
 import com.example.congresotfg.databinding.MainActivityBinding
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: MainActivityBinding
-
-    private lateinit var bindingHome: FragmentHomeBinding
 
     private lateinit var drawer: DrawerLayout
 
@@ -49,7 +51,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
 
         binding = MainActivityBinding.inflate(layoutInflater)
-        bindingHome = FragmentHomeBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -83,22 +84,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navDrawer.setNavigationItemSelectedListener(this)
 
-        val btnAllEvents = findViewById<TextView>(R.id.btn_allEvents)
-
-        btnAllEvents.setOnClickListener(){
-        navController.navigate(R.id.allEvents)
-        Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val btnAllEvents = findViewById<TextView>(R.id.btn_allEvents)
-        btnAllEvents.setOnClickListener(){
-            navController.navigate(R.id.allEvents)
-            Toast.makeText(this, "HOLA", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun setupShortcuts() {
@@ -123,8 +108,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                     binding.customToolbar.txtTitleToolbar.text = "Location"
 
-                    Toast.makeText(this, "Location", Toast.LENGTH_SHORT).show()
-
                 }
 
                 R.id.menu_home -> {
@@ -133,8 +116,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                     binding.customToolbar.txtTitleToolbar.text = "Home"
 
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
-
                 }
 
                 R.id.menu_like -> {
@@ -142,8 +123,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     navController.navigate(R.id.my_events)
 
                     binding.customToolbar.txtTitleToolbar.text = "My List"
-
-                    Toast.makeText(this, "My List", Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -180,11 +159,29 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 Toast.makeText(this, "Cerrando Sesión...", Toast.LENGTH_SHORT).show()
 
+                val recordar = getSharedPreferences("recordar", MODE_PRIVATE)
+                val socio = getSharedPreferences("socio", MODE_PRIVATE)
+
+                val s: SharedPreferences.Editor = socio.edit()
+                s.clear()
+                s.apply()
+
+                val r: SharedPreferences.Editor = recordar.edit()
+                r.clear()
+                r.apply()
+
+                finish()
                 startActivity(intent)
 
             }
 
-            R.id.menu_dark_mode -> Toast.makeText(this, "Modo Oscuro", Toast.LENGTH_SHORT).show()
+            R.id.menu_profile -> {
+                navController.navigate(R.id.profile)
+
+                binding.customToolbar.txtTitleToolbar.text = "My profile"
+
+            }
+
 
         }
 
@@ -202,8 +199,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 binding.customToolbar.txtTitleToolbar.text = "Contact"
 
-                Toast.makeText(this, "Contact", Toast.LENGTH_SHORT).show()
-
             }
 
             R.id.drawer_about -> {
@@ -211,8 +206,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 navController.navigate(R.id.about)
 
                 binding.customToolbar.txtTitleToolbar.text = "About"
-
-                Toast.makeText(this, "About", Toast.LENGTH_SHORT).show()
 
             }
 
@@ -222,8 +215,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 binding.customToolbar.txtTitleToolbar.text = "My Tickets"
 
-                Toast.makeText(this, "My Tickets", Toast.LENGTH_SHORT).show()
-
             }
 
             R.id.drawer_friends -> {
@@ -232,11 +223,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 binding.customToolbar.txtTitleToolbar.text = "Partners"
             }
 
+            R.id.drawer_allEvents -> {
+                navController.navigate(R.id.allEvents)
+
+                binding.customToolbar.txtTitleToolbar.text = "All events"
+            }
+
         }
 
         drawer.closeDrawer(GravityCompat.START)
 
         return true
+
+    }
+
+    override fun onBackPressed() {
+
+
 
     }
 

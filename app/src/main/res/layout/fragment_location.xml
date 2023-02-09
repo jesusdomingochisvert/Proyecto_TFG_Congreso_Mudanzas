@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LocationModule.Location">
+    tools:context=".locationModule.Location">
 
     <com.google.android.material.card.MaterialCardView
 
@@ -18,7 +18,7 @@
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-
+            android:id="@+id/barra"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
@@ -29,10 +29,12 @@
                 android:id="@+id/btn_calcular_ruta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/barra"
                 app:layout_constraintStart_toStartOf="@+id/til_salida"
                 app:layout_constraintEnd_toEndOf="@+id/til_salida"
-                android:text="@string/txt_calcular_ruta"/>
+                android:text="@string/txt_calcular_ruta"
+                android:textColor="@color/rojo"
+                android:backgroundTint="@color/white"/>
 
             <com.google.android.material.textfield.TextInputLayout
 
@@ -40,15 +42,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="50dp"
                 android:hint="@string/text_salida"
+                android:textColorHint="@color/white"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
                 <com.google.android.material.textfield.TextInputEditText
 
                     android:id="@+id/tiet_salida"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,6 +62,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/til_salida"
                 android:hint="@string/text_lugares"
+                android:textColorHint="@color/white"
                 app:startIconDrawable="@drawable/ic_places"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
@@ -69,6 +73,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:inputType="none"
+                    android:textColor="@color/white"
                     tools:text="@string/text_restaurantes"/>
 
             </com.google.android.material.textfield.TextInputLayout>

@@ -17,90 +17,116 @@
         android:layout_height="match_parent"
         >
 
+        <TextView
+            android:id="@+id/txt_recents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:visibility="gone"
+            android:textColor="@color/rojo"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:text="You haven't seen anything yet">
+
+        </TextView>
+
         <org.imaginativeworld.whynotimagecarousel.ImageCarousel
             android:id="@+id/imgCarousel_publicidad"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             app:autoPlay="true"
-            app:autoPlayDelay="2000"
+            app:autoPlayDelay="4000"
             android:layout_marginTop="50dp"
             app:layout_constraintTop_toTopOf="parent"
             app:showNavigationButtons="false"
             app:showCaption="false"
             app:showBottomShadow="false"
             app:showIndicator="false"
+            app:carouselBackground="@color/white"
             app:imageScaleType="centerCrop"/>
 
         <TextView
 
-            android:id="@+id/recent_events"
+            android:id="@+id/recent_events_activities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_recent_events"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:textSize="24sp"
-            android:fontFamily="@font/averia_sans_libre_bold"
             android:textStyle="bold"
+            android:textColor="@color/rojo"
             app:layout_constraintTop_toBottomOf="@+id/imgCarousel_publicidad"
             app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/btn_allEvents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/averia_sans_libre_bold"
-            app:layout_constraintTop_toBottomOf="@+id/imgCarousel_publicidad"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/text_show_all"
-            android:textColor="@color/yellow_app"
-            android:textSize="18sp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recent_events"
             android:layout_width="match_parent"
             android:layout_height="210dp"
-            app:layout_constraintTop_toBottomOf="@+id/recent_events"
+            app:layout_constraintTop_toBottomOf="@+id/recent_events_activities"
             tools:listitem="@layout/item_recent_events"/>
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_activities"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/recent_events_activities"
+            tools:listitem="@layout/item_actividades"/>
 
+        <ProgressBar
+            android:id="@+id/progressbarevents"
+            android:layout_width="@dimen/dimension70dp"
+            android:layout_height="@dimen/dimension70dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="visible">
+        </ProgressBar>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+
+            app:layout_constraintBottom_toBottomOf="@id/rv_activities"
+            app:dividerColor="@color/rojo">
+
+        </com.google.android.material.divider.MaterialDivider>
+        <TextView
             android:id="@+id/eat_zones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
-            android:fontFamily="@font/averia_sans_libre_bold"
             android:text="@string/text_eat_zones"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:textColor="@color/rojo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_recent_events" />
-
-        <TextView
-
-            android:id="@+id/eat_zones_show_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/rv_recent_events"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/text_show_all"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/averia_sans_libre_bold"
-            android:textColor="@color/yellow_app"
-            android:textSize="18sp"/>
+            app:layout_constraintTop_toTopOf="@+id/divider" />
 
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/rv_eat_zones"
             android:layout_width="match_parent"
             android:layout_height="190dp"
-
-            app:layout_constraintTop_toBottomOf="@+id/eat_zones"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@id/eat_zones"
             tools:listitem="@layout/item_eat_zones"/>
+
+        <ProgressBar
+            android:id="@+id/progressbareatzones"
+            android:layout_width="@dimen/dimension70dp"
+            android:layout_height="@dimen/dimension70dp"
+            app:layout_constraintTop_toTopOf="@id/divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/rv_activities"
+            app:layout_constraintStart_toStartOf="@id/rv_activities"
+            android:visibility="visible">
+        </ProgressBar>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

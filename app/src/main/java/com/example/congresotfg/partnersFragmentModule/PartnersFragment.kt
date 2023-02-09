@@ -9,18 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.congresotfg.CongresoApplication
 import com.example.congresotfg.R
 import com.example.congresotfg.common.entities.SocioEntity
+import com.example.congresotfg.common.retrofit.metodos.PartnerMethods
 import com.example.congresotfg.databinding.FragmentPartnersBinding
-import com.example.congresotfg.homeModule.viewModel.PartnersViewModel
+
 import com.example.congresotfg.partnersFragmentModule.adapter.PartnersAdapter
+import com.example.congresotfg.common.utils.CorrutinaClass
+import com.example.congresotfg.common.utils.listeners.SocioListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class PartnersFragment : Fragment(),SocioListener {
-
+class PartnersFragment : Fragment(), SocioListener {
 
     private lateinit var fragmentContext: Context
 
@@ -28,18 +30,13 @@ class PartnersFragment : Fragment(),SocioListener {
 
     private lateinit var linearLayoutManager: RecyclerView.LayoutManager
 
-    private lateinit var partnersViewModel: PartnersViewModel
-
     private lateinit var binding: FragmentPartnersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
 
-        partnersViewModel = ViewModelProvider(requireActivity())[PartnersViewModel::class.java]
-
     }
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
@@ -55,27 +52,37 @@ class PartnersFragment : Fragment(),SocioListener {
 
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModel()
+        partnersAdapter = PartnersAdapter(this)
+
+    }
+
+    override fun onStart() {
+
+        super.onStart()
+
+        getAllPartners()
 
         setupRecyclerView()
 
     }
 
-    private fun setupViewModel() {
+    private fun getAllPartners(){
 
-        partnersViewModel.getSocios().observe(viewLifecycleOwner) { socios ->
+        CorrutinaClass().executeAction(fragmentContext) {
 
-            partnersAdapter.setSocio(socios)
+            val socios = PartnerMethods().getPartners()
+
+            partnersAdapter.submitList(socios)
+
+            binding.progressbar.visibility= View.GONE
 
         }
+
     }
 
     private fun setupRecyclerView() {
 
-        partnersAdapter = PartnersAdapter(mutableListOf(), this)
-
         linearLayoutManager = LinearLayoutManager(fragmentContext)
-
 
         binding.rvPartners.apply {
 
@@ -87,18 +94,24 @@ class PartnersFragment : Fragment(),SocioListener {
 
     }
 
-    override fun onLongClickSocio(socioEntity: SocioEntity) {
+    override fun onClickSocio(socioEntity: SocioEntity) {
+
         val items = arrayOf("Ir a la web de la empresa", "Contactar")
-        MaterialAlertDialogBuilder(requireActivity())
-            .setItems(items) { _, i ->
+
+        MaterialAlertDialogBuilder(requireActivity()).setItems(items) { _, i ->
+
                 when (i) {
+
                     1 -> abrirCorreo(socioEntity.asistente.correo)
+
                     0 -> abrirWeb(socioEntity.empresa.enlace)
-                    
+
                 }
-            }
-            .show()
+
+        }.show()
+
     }
+
 
     private fun abrirCorreo(correo: String) {
 
@@ -110,21 +123,28 @@ class PartnersFragment : Fragment(),SocioListener {
 
             startActivity(Intent.createChooser(intent, "Elige un cliente de Correo:"))
 
-        }
-
+    }
 
     private fun abrirWeb(enlace: String) {
+
         if (enlace.isEmpty()) {
+
             Toast.makeText(requireActivity(), R.string.main_error_no_website, Toast.LENGTH_LONG).show()
+
         } else {
+
             val websiteIntent = Intent().apply {
+
                 action = Intent.ACTION_VIEW
+
                 data = Uri.parse(enlace)
+
             }
 
             startActivity(websiteIntent)
-        }
-    }
 
+        }
+
+    }
 
 }
